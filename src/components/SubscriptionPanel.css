@@ -1,0 +1,8 @@
+.terminal {
+  background-color: black;
+  color: greenyellow;
+  font-family: monospace;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 100%;
+}
