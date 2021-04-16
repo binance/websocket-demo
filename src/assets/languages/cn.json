@@ -1,0 +1,9 @@
+{
+  "streamName": {
+    "aggregateTrade": "归集交易流",
+    "trade": "逐笔交易"
+  },
+  "label": {
+    "generateKey": "生成 Listen Key"
+  }
+}

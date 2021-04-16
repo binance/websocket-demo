@@ -1,7 +1,10 @@
 @import '~antd/dist/antd.css';
+.sider > .ant-layout-sider-children {
+  padding: 0px;
+}
 
-.sider {
-  padding: 10px;
+.sider > .ant-layout-sider-children > .footer {
+  margin: 0px;
 }
 
 .content {

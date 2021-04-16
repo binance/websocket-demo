@@ -1,0 +1,9 @@
+{
+  "streamName": {
+    "aggregateTrade": "Aggregate Trade Streams",
+    "trade": "Trade Streams"
+  },
+  "label": {
+    "generateKey": "Generate Listen Key"
+  }
+}

@@ -1,4 +1,5 @@
 import { Form, Input, Button, Typography } from 'antd';
+import i18n from '../i18n';
 
 const { Text } = Typography;
 
@@ -21,7 +22,7 @@ function KeyPanel() {
           <Input.Password/>
         </Form.Item>
         <Form.Item>
-          <Button type="primary">Generate Listen Key</Button>
+          <Button type="primary">{i18n.t('label.generateKey')}</Button>
         </Form.Item>
       </Form>
       <Text strong>Listen Key</Text>
