@@ -4,6 +4,11 @@
     "trade": "Trade Streams"
   },
   "label": {
-    "generateKey": "Generate Listen Key"
+    "generateKey": "Generate Listen Key",
+    "selectedStream": "Selected Stream",
+    "subscribe": "Subscribe"
+  },
+  "message": {
+    "selectStream": "Choose a stream to subscribe"
   }
 }

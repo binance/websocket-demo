@@ -1,4 +1,4 @@
-export default [
+const streamList = [
   {
     streamName: 'aggregateTrade',
     listenKey: false,
@@ -10,3 +10,5 @@ export default [
     code: '{symbol}@trade'
   }
 ];
+
+export default streamList;

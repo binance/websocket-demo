@@ -4,6 +4,11 @@
     "trade": "逐笔交易"
   },
   "label": {
-    "generateKey": "生成 Listen Key"
+    "generateKey": "生成 Listen Key",
+    "selectedStream": "已选数据流",
+    "subscribe": "订阅"
+  },
+  "message": {
+    "selectStream": "选择数据流"
   }
 }

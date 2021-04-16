@@ -1,24 +1,30 @@
-import { Dropdown, Menu, Typography, Tag } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Button, Form, Select } from 'antd';
+import i18n from '../i18n';
+import { streamList } from '../assets/constants';
 
-const { Text } = Typography;
-const tagList = ['stream1', 'stream2', 'stream3'];
+const { Option } = Select;
+
 function StreamPanel() {
-  const menu = (
-    <Menu>
-      <Menu.Item key='stream1'>Stream 1</Menu.Item>
-      <Menu.Item key='stream2'>Stream 2</Menu.Item>
-    </Menu>
-  );
+  const children = streamList.map(stream => stream.streamName);
+  function handleChange(value) {}
   return (
     <>
-      <Text>Selected Stream</Text>
-      {tagList.map((tag, index) => (<Tag closable key={`tag-${index}`}>{tag}</Tag>))}
-      <Dropdown overlay={menu}>
-        <span>
-        Choose a Stream to Subscribe <DownOutlined />
-        </span>
-      </Dropdown>
+      <Form>
+        <Form.Item label={i18n.t('label.selectedStream')}>
+          <Select
+            mode='multiple'
+            size='default'
+            placeholder={i18n.t('message.selectStream')}
+            onChange={handleChange}
+            style={{ width: '100%' }}
+          >
+          {children.map((stream, index) => <Option key={`stream${index}`}>{i18n.t(`streamName.${stream}`)}</Option>)}
+          </Select>
+        </Form.Item>
+        <Form.Item>
+          <Button type='primary'>{i18n.t('label.subscribe')}</Button>
+        </Form.Item>
+      </Form>
     </>
   );
 }
