@@ -1,10 +1,10 @@
 import { Divider } from 'antd';
 import { KeyPanel, StreamPanel } from './';
 
-function SelectionPanel() {
+function SelectionPanel({ listenKey, actions }) {
     return (
       <div style={{ padding: '10px' }}>
-        <KeyPanel/>
+        <KeyPanel listenKey={listenKey} actions={actions} />
         <Divider orientation="left" plain />
         <StreamPanel/>
       </div>
