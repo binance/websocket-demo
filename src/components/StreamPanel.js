@@ -49,7 +49,7 @@ function StreamPanel({ actions, selectedStream }) {
 
   return (
     <>
-      <TagDisplay tags={selectedStream} />
+      <TagDisplay actions={actions} tags={selectedStream} />
       <div>
         <Dropdown overlay={menu}>
           <span

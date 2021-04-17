@@ -12,12 +12,8 @@ export default function reducer(state = initialState, action) {
     case types.APPEND_STREAM_MESSAGE:
       state.stream = [...state.stream, action.payload];
       break;
-    case types.ADD_STREAM_TO_LIST:
-      const streamList = [...state.selectedStream];
-      if (streamList.indexOf(action.payload) === -1) {
-        streamList.push(action.payload);
-      }
-      state.selectedStream = streamList;
+    case types.SET_SELECTED_STREAM:
+      state.selectedStream = action.payload;
       break;
     default:
       return state;

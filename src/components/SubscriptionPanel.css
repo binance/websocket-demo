@@ -5,4 +5,5 @@
   padding: 5px 10px;
   border-radius: 5px;
   height: 100%;
+  overflow: auto;
 }

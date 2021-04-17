@@ -3,7 +3,7 @@ const endpoints = {
     spotListenKey: `/api/v3/userDataStream`
   },
   ws: {
-    marketBase: streamName => `wss://stream.binance.com:9443/stream?streams=${streamName}`
+    spotBase: `wss://stream.binance.com:9443/stream`
   }
 };
 
