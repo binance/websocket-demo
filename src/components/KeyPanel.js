@@ -2,7 +2,7 @@ import { Form, Input, Button, Typography } from 'antd';
 import i18n from '../i18n';
 import { useState } from 'react';
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 function KeyPanel({ listenKey, actions }) {
   const [key, setKey] = useState('');
@@ -13,17 +13,14 @@ function KeyPanel({ listenKey, actions }) {
   return (
     <>
       <Form>
-        <Form.Item
-          label="API key"
-          name="apiKey"
-        >
+        <Form.Item label="API key" name="apiKey">
           <Input onChange={handleKeyInput}/>
         </Form.Item>
         <Form.Item>
           <Button type="primary" onClick={() => actions.generateSpotUserStreamKey(key)}>{i18n.t('label.generateKey')}</Button>
         </Form.Item>
       </Form>
-      <Text strong>Listen Key</Text>
+      <Title level={5}>Listen Key</Title>
       {listenKey && <Text keyboard>{listenKey}</Text>}
     </>
   );

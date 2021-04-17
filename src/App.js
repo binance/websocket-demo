@@ -10,14 +10,14 @@ import actions from './redux/actions';
 const { Sider, Content, Footer } = Layout;
 const { Option } = Select;
 
-function App({ listenKey, actions }) {
+function App({ actions, listenKey, selectedStream, stream }) {
   const changeLanguage = language => {
     i18n.changeLanguage(language);
   }
   return (
     <Layout style={{height: '100vh'}}>
         <Sider theme='light' width={400} className='sider' style={{height: '100%'}}>
-          <SelectionPanel listenKey={listenKey} actions={actions} />
+          <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
           <Footer style={{ position: "sticky", bottom: "0" }}>
             <Select defaultValue="en" style={{ width: 120 }} onChange={v => changeLanguage(v)}>
               <Option value="en">English</Option>
@@ -26,7 +26,7 @@ function App({ listenKey, actions }) {
           </Footer>
         </Sider> 
       <Content className='content'>
-          <SubscriptionPanel />
+          <SubscriptionPanel stream={stream} />
       </Content>
     </Layout>
   );
@@ -34,7 +34,9 @@ function App({ listenKey, actions }) {
 
 const mapStateToProps = state => {
   return {
-    listenKey: state.listenKey
+    listenKey: state.listenKey,
+    selectedStream: state.selectedStream,
+    stream: state.stream
   }
 };
 

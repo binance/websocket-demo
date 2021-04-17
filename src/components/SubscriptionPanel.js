@@ -1,9 +1,11 @@
 import './SubscriptionPanel.css';
 
-function SubscriptionPanel() {
+function SubscriptionPanel({ stream }) {
     return (
       <div className='terminal'>
-      {'>'} Subscription Panel
+        {stream.length
+          ? stream.map((line, index) => (<p key={`p-${index}`}>{'>'+line}</p>))
+          : (<p>{'> Subscription Panel'}</p>)}
       </div>
     );
   }

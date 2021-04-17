@@ -21,7 +21,32 @@ const generateSpotUserStreamKey = (apiKey) => {
   }
 }
 
+const subscribeMarketStream = () => {
+  return async (dispatch, getState) => {
+    const { selectedStream } = getState();
+    dispatch({
+      type: types.CLEAR_STREAM_MESSAGE,
+    });
+    const payload = [];
+    // call ws
+    dispatch({
+      type: types.APPEND_STREAM_MESSAGE,
+      payload: payload
+    });
+
+  }
+};
+
+const selectStream = (code) => {
+  return {
+    type: types.ADD_STREAM_TO_LIST,
+    payload: code
+  }
+};
+
 const actions = {
-  generateSpotUserStreamKey
+  generateSpotUserStreamKey,
+  selectStream,
+  subscribeMarketStream
 };
 export default actions;
