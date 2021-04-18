@@ -1,7 +1,16 @@
 {
   "streamName": {
     "aggregateTrade": "归集交易流",
-    "trade": "逐笔交易"
+    "trade": "逐笔交易",
+    "kline": "K线 Streams",
+    "miniTicker": "按 Symbol 的精简Ticker",
+    "allMarketMiniTicker": "全市场所有Symbol的精简Ticker",
+    "ticker": "按Symbol的完整Ticker",
+    "allMarketTicker": "全市场所有交易对的完整Ticker",
+    "bookTicker": "按Symbol的最优挂单信息",
+    "allBookTicker": "全市场最优挂单信息",
+    "partialBookDepth": "有限档深度信息",
+    "diffBookDepth": "增量深度信息"
   },
   "label": {
     "generateKey": "生成 Listen Key",

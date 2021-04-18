@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { Modal, Typography } from 'antd';
+import i18n from '../i18n';
 import { allTypeStreamList, symbols, intervals, levels } from '../assets/constants';
 import './StreamSettingModal.css';
 
@@ -10,20 +11,37 @@ const SYMBOL = 'symbol';
 const INTERVAL = 'interval';
 const LEVEL = 'levels';
 
-function StreamSettingModal({ categoryIndex, streamIndex, visible, onOk, onCancel }) {
-  const categoryData = allTypeStreamList[categoryIndex];
-  const streamData = categoryData.streamList[streamIndex];
-  const [code, setCode] = useState(streamData.attributeList.length ? '' : streamData.code);
+function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
+  const [categoryData, setCategoryData] = useState({});
+  const [streamData, setStreamData] = useState({attributeList: []});
+  const [code, setCode] = useState('');
+  useEffect(() => {
+    const index = indexKey.indexOf('-') || 0;
+    const categoryIndex = indexKey.substring(0, index);
+    setCategoryData(allTypeStreamList[categoryIndex]);
+  }, [indexKey, setCategoryData]);
+  useEffect(() => {
+    if (categoryData.streamList) {
+      const index = indexKey.indexOf('-') || 0;
+      const streamIndex = indexKey.substring(index + 1);
+      setStreamData(categoryData.streamList[streamIndex]);
+    }
+  }, [indexKey, categoryData, setStreamData]);
+
+  useEffect(() => {
+    streamData.code && setCode(streamData.code);
+  }, [setCode, streamData])
+
   const applyValue = (code, attributeName, value) => {
     return code.replace(`{${attributeName}}`, value);
   };
   const onAttributeChange = (attribute, value) => {
-    let streamCode = code ? code : streamData.code;
-    setCode(applyValue(streamCode, attribute, value));
+    setCode(applyValue(code, attribute, value));
   };
+
   return (
     <>
-      <Modal visible={visible} onOk={() => onOk(code)} onCancel={onCancel}>
+      <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(code)} onCancel={onCancel}>
         {streamData.attributeList.includes(SYMBOL) && (
           <>
             <Text>Symbol</Text>

@@ -1,7 +1,16 @@
 {
   "streamName": {
     "aggregateTrade": "Aggregate Trade Streams",
-    "trade": "Trade Streams"
+    "trade": "Trade Streams",
+    "kline": "Kline/Candlestick Streams",
+    "miniTicker": "Individual Symbol Mini Ticker Stream",
+    "allMarketMiniTicker": "All Market Mini Tickers Stream",
+    "ticker": "Individual Symbol Ticker Streams",
+    "allMarketTicker": "All Market Tickers Stream",
+    "bookTicker": "Individual Symbol Book Ticker Streams",
+    "allBookTicker": "All Book Tickers Stream",
+    "partialBookDepth": "Partial Book Depth Streams",
+    "diffBookDepth": "Diff. Depth Stream"
   },
   "label": {
     "generateKey": "Generate Listen Key",

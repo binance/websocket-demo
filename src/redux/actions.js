@@ -22,7 +22,7 @@ const generateSpotUserStreamKey = apiKey => {
 };
 
 const toLowerCase = selectStream => {
-  return selectStream.map(stream => stream.replace(/(.+)@/, symbol => symbol.toLowerCase()));
+  return selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
 };
 
 const subscribeMarketStream = () => {
