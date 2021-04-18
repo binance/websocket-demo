@@ -14,10 +14,12 @@ function KeyPanel({ listenKey, actions }) {
     <>
       <Form>
         <Form.Item label="API key" name="apiKey">
-          <Input onChange={handleKeyInput}/>
+          <Input onChange={handleKeyInput} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" onClick={() => actions.generateSpotUserStreamKey(key)}>{i18n.t('label.generateKey')}</Button>
+          <Button type="primary" onClick={() => actions.generateSpotUserStreamKey(key)}>
+            {i18n.t('label.generateKey')}
+          </Button>
         </Form.Item>
       </Form>
       <Title level={5}>Listen Key</Title>
@@ -25,5 +27,5 @@ function KeyPanel({ listenKey, actions }) {
     </>
   );
 }
-  
+
 export default KeyPanel;

@@ -13,20 +13,20 @@ const { Option } = Select;
 function App({ actions, listenKey, selectedStream, stream }) {
   const changeLanguage = language => {
     i18n.changeLanguage(language);
-  }
+  };
   return (
-    <Layout style={{height: '100vh'}}>
-        <Sider theme='light' width={400} className='sider' style={{height: '100%'}}>
-          <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
-          <Footer style={{ position: "sticky", bottom: "0" }}>
-            <Select defaultValue="en" style={{ width: 120 }} onChange={v => changeLanguage(v)}>
-              <Option value="en">English</Option>
-              <Option value="cn">中文</Option>
-            </Select>
-          </Footer>
-        </Sider> 
-      <Content className='content'>
-          <SubscriptionPanel stream={stream} />
+    <Layout style={{ height: '100vh' }}>
+      <Sider theme="light" width={400} className="sider" style={{ height: '100%' }}>
+        <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
+        <Footer style={{ position: 'sticky', bottom: '0' }}>
+          <Select defaultValue="en" style={{ width: 120 }} onChange={v => changeLanguage(v)}>
+            <Option value="en">English</Option>
+            <Option value="cn">中文</Option>
+          </Select>
+        </Footer>
+      </Sider>
+      <Content className="content">
+        <SubscriptionPanel stream={stream} />
       </Content>
     </Layout>
   );
@@ -37,12 +37,13 @@ const mapStateToProps = state => {
     listenKey: state.listenKey,
     selectedStream: state.selectedStream,
     stream: state.stream
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({...actions}, dispatch)  };
+    actions: bindActionCreators({ ...actions }, dispatch)
+  };
 };
 
 export default withNamespaces()(connect(mapStateToProps, mapDispatchToProps)(App));

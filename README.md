@@ -1,7 +1,6 @@
 ## Readme
 
-This web app is developed to simplify the binance websocket stream testing process. By utilizing the interface, the user can check on multiple streams at a time without knowing the parameters. Since this app is designed for testing purpose instead of the real subscription tool, ***all the subscribed streams will be unsubscribed in 2 sec.***
-
+This web app is developed to simplify the binance websocket stream testing process. By utilizing the interface, the user can check on multiple streams at a time without knowing the parameters. Since this app is designed for testing purpose instead of the real subscription tool, **_all the subscribed streams will be unsubscribed in 2 sec._**
 
 ### Available Scripts
 

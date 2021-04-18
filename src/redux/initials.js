@@ -4,4 +4,4 @@ const initials = {
   selectedStream: [],
   stream: []
 };
-export default initials; 
+export default initials;
