@@ -10,7 +10,8 @@
     "bookTicker": "按Symbol的最优挂单信息",
     "allBookTicker": "全市场最优挂单信息",
     "partialBookDepth": "有限档深度信息",
-    "diffBookDepth": "增量深度信息"
+    "diffBookDepth": "增量深度信息",
+    "userStream": "Websocket账户信息推送"
   },
   "label": {
     "generateKey": "生成 Listen Key",

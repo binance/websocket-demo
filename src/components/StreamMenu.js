@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
 import { allTypeStreamList } from '../assets/constants';
-import {StreamSettingModal } from './';
+import { StreamSettingModal } from './';
 
 function StreamMenu({ actions }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -14,8 +14,9 @@ function StreamMenu({ actions }) {
   };
 
   const menu = useMemo(() => {
-    const handleOk = (code) => {
-      if (code) actions.selectStream(code);   
+    const handleOk = (dataSource, code) => {
+      if (dataSource === 'user') actions.selectUserStream(dataSource);
+      else if (code) actions.selectStream(dataSource, code);   
       setIsModalVisible(false);
     };
   
@@ -41,7 +42,7 @@ function StreamMenu({ actions }) {
           >
             {streamType.streamList.map((stream, streamIndex) => {
               return (
-                <Menu.Item key={`${categoryIndex}-${streamIndex}`}>
+                <Menu.Item key={`${streamType.dataSource}::${categoryIndex}-${streamIndex}`}>
                   {i18n.t(`streamName.${stream.streamName}`)}
                 </Menu.Item>
               );

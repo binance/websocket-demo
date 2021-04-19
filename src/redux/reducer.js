@@ -13,10 +13,13 @@ export default function reducer(state = initialState, action) {
       state.stream = [...state.stream, action.payload];
       break;
     case types.SET_SELECTED_STREAM:
-      state.selectedStream = action.payload;
+      state.selectedStream = {
+        dataSource: action.payload.dataSource,
+        codes: action.payload.codes
+      };
       break;
     default:
       return state;
   }
-  return { ...state };
+  return {...state};
 }

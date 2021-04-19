@@ -1,6 +1,7 @@
 import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
+import { EMPTY_STR } from '../assets/constants';
 
 const generateSpotUserStreamKey = apiKey => {
   return async dispatch => {
@@ -21,14 +22,18 @@ const generateSpotUserStreamKey = apiKey => {
   };
 };
 
-const toLowerCase = selectStream => {
-  return selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
+const isUserStream = (dataSource) => {
+  return dataSource === 'user';
+}
+
+const convertStream = (dataSource, selectStream, key) => {
+  return isUserStream(dataSource) ? [key] : selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
 };
 
-const subscribeMarketStream = () => {
+const subscribeStream = () => {
   return async (dispatch, getState) => {
-    const { selectedStream } = getState();
-    const lowerCaseStreams = toLowerCase(selectedStream);
+    const { listenKey, selectedStream } = getState();
+    const streams = convertStream(selectedStream.dataSource, selectedStream.codes, listenKey);
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
@@ -40,7 +45,7 @@ const subscribeMarketStream = () => {
       ws.send(
         JSON.stringify({
           method: 'SUBSCRIBE',
-          params: lowerCaseStreams,
+          params: streams,
           id: 1
         })
       );
@@ -48,11 +53,11 @@ const subscribeMarketStream = () => {
         ws.send(
           JSON.stringify({
             method: 'UNSUBSCRIBE',
-            params: lowerCaseStreams,
+            params: streams,
             id: 1
           })
         );
-      }, 2000);
+      }, 3000);
     };
     ws.onmessage = function (e) {
       if (e.type === 'error') {
@@ -74,16 +79,30 @@ const wsOnClose = () => {
   console.log('Connection closed.');
 };
 
-const selectStream = code => {
+const selectStream = (dataSource, code) => {
   return (dispatch, getState) => {
     const { selectedStream } = getState();
-    const streamList = [...selectedStream];
-    if (streamList.indexOf(code) === -1) {
+    const codes = selectedStream.codes;
+    const streamList = [...codes];
+    if ((selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource) && streamList.indexOf(code) === -1) {
       streamList.push(code);
       dispatch({
         type: types.SET_SELECTED_STREAM,
-        payload: streamList
+        payload: {
+          dataSource: dataSource,
+          codes: streamList
+        }
       });
+    }
+  };
+};
+
+const selectUserStream = (dataSource) => {
+  return {
+    type: types.SET_SELECTED_STREAM,
+    payload: {
+      dataSource: dataSource,
+      codes: ['user data']
     }
   };
 };
@@ -91,12 +110,16 @@ const selectStream = code => {
 const removeSelectedStream = code => {
   return (dispatch, getState) => {
     const { selectedStream } = getState();
-    const streamList = [...selectedStream];
+    const codes = selectedStream.codes;
+    const streamList = [...codes];
     const index = streamList.indexOf(code);
     streamList.splice(index, 1);
     dispatch({
       type: types.SET_SELECTED_STREAM,
-      payload: streamList
+      payload: {
+        dataSource: streamList.length ? selectedStream.dataSource : EMPTY_STR,
+        codes: streamList
+      }
     });
   };
 };
@@ -104,7 +127,8 @@ const removeSelectedStream = code => {
 const actions = {
   generateSpotUserStreamKey,
   selectStream,
+  selectUserStream,
   removeSelectedStream,
-  subscribeMarketStream
+  subscribeStream
 };
 export default actions;

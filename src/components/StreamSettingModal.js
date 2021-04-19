@@ -12,12 +12,18 @@ const INTERVAL = 'interval';
 const LEVEL = 'levels';
 
 function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
+  const [dataSource, setDataSource] = useState('');
   const [categoryData, setCategoryData] = useState({});
   const [streamData, setStreamData] = useState({attributeList: []});
   const [code, setCode] = useState('');
   useEffect(() => {
+    const index = indexKey.indexOf(':') || 0;
+    setDataSource(indexKey.substring(0, index));
+  }, [indexKey, setCategoryData]);
+  useEffect(() => {
+    const startIndex = indexKey.indexOf(':') + 2 || 0;
     const index = indexKey.indexOf('-') || 0;
-    const categoryIndex = indexKey.substring(0, index);
+    const categoryIndex = indexKey.substring(startIndex, index);
     setCategoryData(allTypeStreamList[categoryIndex]);
   }, [indexKey, setCategoryData]);
   useEffect(() => {
@@ -41,7 +47,7 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
 
   return (
     <>
-      <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(code)} onCancel={onCancel}>
+      <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(dataSource, code)} onCancel={onCancel}>
         {streamData.attributeList.includes(SYMBOL) && (
           <>
             <Text>Symbol</Text>

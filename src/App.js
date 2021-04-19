@@ -1,5 +1,5 @@
 import './App.css';
-import { Layout, Select } from 'antd';
+import { Layout, Select, Typography } from 'antd';
 import { SelectionPanel, SubscriptionPanel } from './components';
 import { withNamespaces } from 'react-i18next';
 import { bindActionCreators } from 'redux';
@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import i18n from './i18n';
 import actions from './redux/actions';
 
+const { Title } = Typography;
 const { Sider, Content, Footer } = Layout;
 const { Option } = Select;
 
@@ -17,6 +18,7 @@ function App({ actions, listenKey, selectedStream, stream }) {
   return (
     <Layout style={{ height: '100vh' }}>
       <Sider theme="light" width={400} className="sider" style={{ height: '100%' }}>
+        <Title level={3}>Websocket Demo</Title>
         <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
         <Footer style={{ position: 'sticky', bottom: '0' }}>
           <Select defaultValue="en" style={{ width: 120 }} onChange={v => changeLanguage(v)}>

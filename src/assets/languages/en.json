@@ -10,7 +10,8 @@
     "bookTicker": "Individual Symbol Book Ticker Streams",
     "allBookTicker": "All Book Tickers Stream",
     "partialBookDepth": "Partial Book Depth Streams",
-    "diffBookDepth": "Diff. Depth Stream"
+    "diffBookDepth": "Diff. Depth Stream",
+    "userStream": "User Data Streams"
   },
   "label": {
     "generateKey": "Generate Listen Key",

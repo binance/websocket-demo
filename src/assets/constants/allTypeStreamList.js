@@ -70,6 +70,18 @@ const allTypeStreamList = [
         attributeList: ['symbol']
       }
     ]
+  },
+  {
+    type: 'spot',
+    dataSource: 'user',
+    streamList: [
+      {
+        streamName: 'userStream',
+        listenKey: true,
+        code: '',
+        attributeList: []
+      }
+    ]
   }
 ];
 
