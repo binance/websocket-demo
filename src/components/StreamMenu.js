@@ -2,21 +2,33 @@ import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
 import { allTypeStreamList } from '../assets/constants';
+import { extractCategoryIndex, extractDataSource, extractStreamIndex, generateStreamKey, isUserStream } from '../assets/common';
 import { StreamSettingModal } from './';
 
 function StreamMenu({ actions }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [indexKey, setKey] = useState('');
+  const [indexKey, setIndexKey] = useState('');
 
   const onClickMenuItem = e => {
-    setKey(e.key);
-    setIsModalVisible(true);
+    setIndexKey(e.key);
+    const key = e.key;
+    const dataSource = extractDataSource(key);
+    const streamData = allTypeStreamList[extractCategoryIndex(key)]
+      .streamList[extractStreamIndex(key)];
+    if (streamData.attributeList.length) {
+      setIsModalVisible(true);
+    } else {
+      if (isUserStream(dataSource)) {
+        actions.selectUserStream(dataSource);
+      } else {
+        actions.selectStream(dataSource, streamData.code);
+      }
+    }
   };
 
   const menu = useMemo(() => {
     const handleOk = (dataSource, code) => {
-      if (dataSource === 'user') actions.selectUserStream(dataSource);
-      else if (code) actions.selectStream(dataSource, code);   
+      if (code) actions.selectStream(dataSource, code);   
       setIsModalVisible(false);
     };
   
@@ -42,7 +54,7 @@ function StreamMenu({ actions }) {
           >
             {streamType.streamList.map((stream, streamIndex) => {
               return (
-                <Menu.Item key={`${streamType.dataSource}::${categoryIndex}-${streamIndex}`}>
+                <Menu.Item key={generateStreamKey(streamType.dataSource, categoryIndex, streamIndex)}>
                   {i18n.t(`streamName.${stream.streamName}`)}
                 </Menu.Item>
               );

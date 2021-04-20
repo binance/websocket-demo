@@ -3,6 +3,7 @@ import { Select } from 'antd';
 import { Modal, Typography } from 'antd';
 import i18n from '../i18n';
 import { allTypeStreamList, symbols, intervals, levels } from '../assets/constants';
+import { extractCategoryIndex, extractDataSource, extractStreamIndex } from '../assets/common';
 import './StreamSettingModal.css';
 
 const { Option } = Select;
@@ -17,25 +18,19 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
   const [streamData, setStreamData] = useState({attributeList: []});
   const [code, setCode] = useState('');
   useEffect(() => {
-    const index = indexKey.indexOf(':') || 0;
-    setDataSource(indexKey.substring(0, index));
-  }, [indexKey, setCategoryData]);
+    setDataSource(extractDataSource(indexKey));
+  }, [indexKey, setDataSource]);
   useEffect(() => {
-    const startIndex = indexKey.indexOf(':') + 2 || 0;
-    const index = indexKey.indexOf('-') || 0;
-    const categoryIndex = indexKey.substring(startIndex, index);
-    setCategoryData(allTypeStreamList[categoryIndex]);
+    setCategoryData(allTypeStreamList[extractCategoryIndex(indexKey)]);
   }, [indexKey, setCategoryData]);
   useEffect(() => {
     if (categoryData.streamList) {
-      const index = indexKey.indexOf('-') || 0;
-      const streamIndex = indexKey.substring(index + 1);
-      setStreamData(categoryData.streamList[streamIndex]);
+      setStreamData(categoryData.streamList[extractStreamIndex(indexKey)]);
     }
   }, [indexKey, categoryData, setStreamData]);
 
   useEffect(() => {
-    streamData.code && setCode(streamData.code);
+    streamData && setCode(streamData.code);
   }, [setCode, streamData])
 
   const applyValue = (code, attributeName, value) => {
@@ -47,7 +42,7 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
 
   return (
     <>
-      <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(dataSource, code)} onCancel={onCancel}>
+      {streamData && <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(dataSource, code)} onCancel={onCancel}>
         {streamData.attributeList.includes(SYMBOL) && (
           <>
             <Text>Symbol</Text>
@@ -84,7 +79,7 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
             </Select>
           </>
         )}
-      </Modal>
+      </Modal>}
     </>
   );
 }

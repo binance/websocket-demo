@@ -2,6 +2,7 @@ import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
 import { EMPTY_STR } from '../assets/constants';
+import { isUserStream } from '../assets/common';
 
 const generateSpotUserStreamKey = apiKey => {
   return async dispatch => {
@@ -21,10 +22,6 @@ const generateSpotUserStreamKey = apiKey => {
     }
   };
 };
-
-const isUserStream = (dataSource) => {
-  return dataSource === 'user';
-}
 
 const convertStream = (dataSource, selectStream, key) => {
   return isUserStream(dataSource) ? [key] : selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
