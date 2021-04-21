@@ -54,6 +54,7 @@ const subscribeStream = () => {
             id: 1
           })
         );
+        ws.close();
       }, 3000);
     };
     ws.onmessage = function (e) {
