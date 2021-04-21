@@ -14,6 +14,6 @@ export const extractStreamIndex = streamKey => {
   const index = streamKey.indexOf('-') || 0;
   return Number(streamKey.substring(index + 1));
 };
-export const isUserStream = (dataSource) => {
+export const isUserStream = dataSource => {
   return dataSource === 'user';
 };

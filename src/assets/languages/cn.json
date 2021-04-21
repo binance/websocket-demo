@@ -19,6 +19,7 @@
     "subscribe": "订阅"
   },
   "message": {
+    "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",
     "selectStream": "选择数据流"
   }
 }

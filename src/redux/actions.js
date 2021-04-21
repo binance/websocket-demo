@@ -24,7 +24,9 @@ const generateSpotUserStreamKey = apiKey => {
 };
 
 const convertStream = (dataSource, selectStream, key) => {
-  return isUserStream(dataSource) ? [key] : selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
+  return isUserStream(dataSource)
+    ? [key]
+    : selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
 };
 
 const subscribeStream = () => {
@@ -82,7 +84,10 @@ const selectStream = (dataSource, code) => {
     const { selectedStream } = getState();
     const codes = selectedStream.codes;
     const streamList = [...codes];
-    if ((selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource) && streamList.indexOf(code) === -1) {
+    if (
+      (selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource) &&
+      streamList.indexOf(code) === -1
+    ) {
       streamList.push(code);
       dispatch({
         type: types.SET_SELECTED_STREAM,
@@ -95,7 +100,7 @@ const selectStream = (dataSource, code) => {
   };
 };
 
-const selectUserStream = (dataSource) => {
+const selectUserStream = dataSource => {
   return {
     type: types.SET_SELECTED_STREAM,
     payload: {

@@ -19,6 +19,7 @@
     "subscribe": "Subscribe"
   },
   "message": {
+    "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",
     "selectStream": "Choose a stream to subscribe"
   }
 }

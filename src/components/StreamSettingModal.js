@@ -15,7 +15,7 @@ const LEVEL = 'levels';
 function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
   const [dataSource, setDataSource] = useState('');
   const [categoryData, setCategoryData] = useState({});
-  const [streamData, setStreamData] = useState({attributeList: []});
+  const [streamData, setStreamData] = useState({ attributeList: [] });
   const [code, setCode] = useState('');
   useEffect(() => {
     setDataSource(extractDataSource(indexKey));
@@ -31,7 +31,7 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
 
   useEffect(() => {
     streamData && setCode(streamData.code);
-  }, [setCode, streamData])
+  }, [setCode, streamData]);
 
   const applyValue = (code, attributeName, value) => {
     return code.replace(`{${attributeName}}`, value);
@@ -42,44 +42,51 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
 
   return (
     <>
-      {streamData && <Modal title={i18n.t(`streamName.${streamData.streamName}`)} visible={visible} onOk={() => onOk(dataSource, code)} onCancel={onCancel}>
-        {streamData.attributeList.includes(SYMBOL) && (
-          <>
-            <Text>Symbol</Text>
-            <Select style={{ width: 200 }} onChange={value => onAttributeChange(SYMBOL, value)}>
-              {symbols.map(symbol => (
-                <Option key={symbol} value={symbol}>
-                  {symbol}
-                </Option>
-              ))}
-            </Select>
-          </>
-        )}
-        {streamData.attributeList.includes(INTERVAL) && (
-          <>
-            <Text>Interval</Text>
-            <Select style={{ width: 200 }} onChange={value => onAttributeChange(INTERVAL, value)}>
-              {intervals.map(interval => (
-                <Option key={interval} value={interval}>
-                  {interval}
-                </Option>
-              ))}
-            </Select>
-          </>
-        )}
-        {streamData.attributeList.includes(LEVEL) && (
-          <>
-            <Text>Level</Text>
-            <Select style={{ width: 200 }} onChange={value => onAttributeChange(LEVEL, value)}>
-              {levels.map(level => (
-                <Option key={level} value={level}>
-                  {level}
-                </Option>
-              ))}
-            </Select>
-          </>
-        )}
-      </Modal>}
+      {streamData && (
+        <Modal
+          title={i18n.t(`streamName.${streamData.streamName}`)}
+          visible={visible}
+          onOk={() => onOk(dataSource, code)}
+          onCancel={onCancel}
+        >
+          {streamData.attributeList.includes(SYMBOL) && (
+            <>
+              <Text>Symbol</Text>
+              <Select style={{ width: 200 }} onChange={value => onAttributeChange(SYMBOL, value)}>
+                {symbols.map(symbol => (
+                  <Option key={symbol} value={symbol}>
+                    {symbol}
+                  </Option>
+                ))}
+              </Select>
+            </>
+          )}
+          {streamData.attributeList.includes(INTERVAL) && (
+            <>
+              <Text>Interval</Text>
+              <Select style={{ width: 200 }} onChange={value => onAttributeChange(INTERVAL, value)}>
+                {intervals.map(interval => (
+                  <Option key={interval} value={interval}>
+                    {interval}
+                  </Option>
+                ))}
+              </Select>
+            </>
+          )}
+          {streamData.attributeList.includes(LEVEL) && (
+            <>
+              <Text>Level</Text>
+              <Select style={{ width: 200 }} onChange={value => onAttributeChange(LEVEL, value)}>
+                {levels.map(level => (
+                  <Option key={level} value={level}>
+                    {level}
+                  </Option>
+                ))}
+              </Select>
+            </>
+          )}
+        </Modal>
+      )}
     </>
   );
 }

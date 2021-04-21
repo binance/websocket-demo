@@ -6,7 +6,7 @@ function SelectionPanel({ actions, listenKey, selectedStream }) {
     <>
       <KeyPanel listenKey={listenKey} actions={actions} />
       <Divider orientation="left" plain />
-      <StreamPanel actions={actions} selectedStream={selectedStream} />
+      <StreamPanel actions={actions} selectedStream={selectedStream} hasKey={!!listenKey} />
     </>
   );
 }
