@@ -17,19 +17,19 @@ function App({ actions, listenKey, selectedStream, stream }) {
   };
   return (
     <Layout style={{ height: '100vh' }}>
-      <Sider theme="light" width={400} className="sider" style={{ height: '100%' }}>
+      <Sider theme="light" width={400} className="sider">
         <Title level={3}>Websocket Demo</Title>
         <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
-        <Footer style={{ position: 'sticky', bottom: '0' }}>
-          <Select defaultValue="en" style={{ width: 120 }} onChange={v => changeLanguage(v)}>
-            <Option value="en">English</Option>
-            <Option value="cn">中文</Option>
-          </Select>
-        </Footer>
       </Sider>
       <Content className="content">
         <SubscriptionPanel stream={stream} />
       </Content>
+      <Footer>
+        <Select defaultValue="en" style={{ width: 150 }} onChange={v => changeLanguage(v)}>
+          <Option value="en">English</Option>
+          <Option value="cn">中文</Option>
+        </Select>
+      </Footer>
     </Layout>
   );
 }

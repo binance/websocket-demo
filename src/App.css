@@ -3,8 +3,11 @@
   padding: 10px;
 }
 
-.sider > .ant-layout-sider-children > .footer {
+.ant-layout-footer {
   margin: 0px;
+  position: fixed;
+  bottom: 0;
+  width: 400px;
 }
 
 .content {
