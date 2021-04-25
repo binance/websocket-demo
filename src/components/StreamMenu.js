@@ -1,14 +1,14 @@
 import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
-import { allTypeStreamList } from '../assets/constants';
+import { allTypeStreamList } from '@constants';
 import {
   extractCategoryIndex,
   extractDataSource,
   extractStreamIndex,
   generateStreamKey,
   isUserStream
-} from '../assets/common';
+} from '@common';
 import { StreamSettingModal } from './';
 
 function StreamMenu({ actions }) {

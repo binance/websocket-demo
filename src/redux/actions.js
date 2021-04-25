@@ -1,8 +1,8 @@
 import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
-import { EMPTY_STR } from '../assets/constants';
-import { isUserStream } from '../assets/common';
+import { EMPTY_STR } from '@constants';
+import { isUserStream } from '@common';
 
 const generateSpotUserStreamKey = apiKey => {
   return async dispatch => {

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { Modal, Form } from 'antd';
 import i18n from '../i18n';
-import { allTypeStreamList, symbols, intervals, levels } from '../assets/constants';
-import { extractCategoryIndex, extractDataSource, extractStreamIndex } from '../assets/common';
+import { allTypeStreamList, symbols, intervals, levels } from '@constants';
+import { extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
 
 const { Option } = Select;

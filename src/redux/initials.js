@@ -1,4 +1,4 @@
-import { EMPTY_STR } from '../assets/constants';
+import { EMPTY_STR } from '@constants';
 const initials = {
   listenKey: EMPTY_STR,
   selectedStream: {

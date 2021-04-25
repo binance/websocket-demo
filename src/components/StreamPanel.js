@@ -1,7 +1,7 @@
 import { message, Button, Dropdown } from 'antd';
 import i18n from '../i18n';
 import { DownOutlined } from '@ant-design/icons';
-import { isUserStream } from '../assets/common';
+import { isUserStream } from '@common';
 import { TagDisplay } from './';
 import { StreamMenu } from './';
 
