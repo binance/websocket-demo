@@ -81,7 +81,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "pretty-quick": "pretty-quick --write ."
+    "pretty-quick": "pretty-quick --write .",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -160,6 +162,10 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "husky": "^6.0.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0"
