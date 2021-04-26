@@ -1,7 +1,7 @@
 import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
-import { EMPTY_STR } from '@constants';
+import { EMPTY_STR, PROD } from '@constants';
 import { isUserStream } from '@common';
 
 const generateSpotUserStreamKey = apiKey => {
@@ -27,14 +27,18 @@ const convertStream = (dataSource, selectStream, key) => {
   return isUserStream(dataSource) ? [key] : selectStream;
 };
 
-const subscribeStream = () => {
+const getBase = env => {
+  return env === PROD ? endpoints.ws.spotBase : endpoints.ws.spotTestBase;
+};
+
+const subscribeStream = env => {
   return async (dispatch, getState) => {
     const { listenKey, selectedStream } = getState();
     const streams = convertStream(selectedStream.dataSource, selectedStream.codes, listenKey);
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
-    const ws = new WebSocket(endpoints.ws.spotBase);
+    const ws = new WebSocket(getBase(env));
     ws.onerror = wsOnError;
     ws.onclose = wsOnClose;
     ws.onopen = function () {

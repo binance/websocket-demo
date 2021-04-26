@@ -16,7 +16,8 @@
   "label": {
     "generateKey": "生成 Listen Key",
     "selectedStream": "已选数据流",
-    "subscribe": "订阅"
+    "prodSubscribe": "生产环境订阅",
+    "testSubscribe": "测试环境订阅"
   },
   "message": {
     "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",

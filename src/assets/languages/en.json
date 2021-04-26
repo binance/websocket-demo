@@ -16,7 +16,8 @@
   "label": {
     "generateKey": "Generate Listen Key",
     "selectedStream": "Selected Stream",
-    "subscribe": "Subscribe"
+    "prodSubscribe": "PROD Subscribe",
+    "testSubscribe": "TESTNET Subscribe"
   },
   "message": {
     "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",

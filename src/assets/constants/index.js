@@ -19,3 +19,5 @@ export const intervals = [
   '1w',
   '1M'
 ];
+export const TESTNET = 'testnet';
+export const PROD = 'prod';
