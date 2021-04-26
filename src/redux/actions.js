@@ -24,9 +24,7 @@ const generateSpotUserStreamKey = apiKey => {
 };
 
 const convertStream = (dataSource, selectStream, key) => {
-  return isUserStream(dataSource)
-    ? [key]
-    : selectStream.map(stream => stream.replace(/([A-Z]+)@/, symbol => symbol.toLowerCase()));
+  return isUserStream(dataSource) ? [key] : selectStream;
 };
 
 const subscribeStream = () => {

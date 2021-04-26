@@ -33,7 +33,12 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
     streamData && setCode(streamData.code);
   }, [setCode, streamData]);
 
+  const processSymbolName = (attributeName, value) => {
+    return attributeName === SYMBOL ? value.toLowerCase() : value;
+  };
+
   const applyValue = (code, attributeName, value) => {
+    value = processSymbolName(attributeName, value);
     const newCode = code.match(`{${attributeName}}`)
       ? code.replace(`{${attributeName}}`, value)
       : code.replace(`${lastAttributeValues[attributeName]}`, value);
