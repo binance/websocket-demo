@@ -125,3 +125,6 @@ dist
 
 # Local History for Visual Studio Code
 .history/
+
+# storybook
+storybook-static/

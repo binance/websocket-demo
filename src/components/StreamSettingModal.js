@@ -5,13 +5,14 @@ import i18n from '../i18n';
 import { allTypeStreamList, symbols, intervals, levels } from '@constants';
 import { extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
+import PropTypes from 'prop-types';
 
 const { Option } = Select;
 const SYMBOL = 'symbol';
 const INTERVAL = 'interval';
 const LEVEL = 'levels';
 
-function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
+function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) {
   const [dataSource, setDataSource] = useState('');
   const [categoryData, setCategoryData] = useState({});
   const [streamData, setStreamData] = useState({ attributeList: [] });
@@ -106,4 +107,11 @@ function StreamSettingModal({ indexKey, visible, onOk, onCancel }) {
     </>
   );
 }
+
+StreamSettingModal.propTypes = {
+  indexKey: PropTypes.string,
+  visible: PropTypes.bool,
+  onOk: PropTypes.func,
+  onCancel: PropTypes.func
+};
 export default StreamSettingModal;
