@@ -4,6 +4,8 @@ This web app is developed to simplify the binance websocket stream testing proce
 
 The left hand side of the screen has 2 parts. The upper is the key generation section. If the user aims to check on the market streams, the key is not required and the user can proceed to the 2nd part. The lower is the stream selection area. The user can only select the streams under the same data source. That is, once the user select a spot market stream, to select from other source, such as spot user stream, is not allowed.
 
+**Note: Some of the symbols are only available in PRODUCTION.**
+
 ### Websocket reference
 
 - [Binance API doc](https://binance-docs.github.io/apidocs/spot/en/#websocket-market-streams)

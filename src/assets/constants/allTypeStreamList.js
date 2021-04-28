@@ -82,6 +82,36 @@ const allTypeStreamList = [
         attributeList: []
       }
     ]
+  },
+  {
+    type: 'u_futures',
+    dataSource: 'market',
+    streamList: [
+      {
+        streamName: 'aggregateTrade',
+        listenKey: false,
+        code: '{usymbol}@aggTrade',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'markPriceStream',
+        listenKey: false,
+        code: '{usymbol}@markPrice',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'allMarkPriceStream',
+        listenKey: false,
+        code: '!markPrice@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'kline',
+        listenKey: false,
+        code: '{usymbol}@kline_{interval}',
+        attributeList: ['usymbol', 'interval']
+      }
+    ]
   }
 ];
 

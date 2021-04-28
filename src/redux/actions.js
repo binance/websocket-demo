@@ -1,7 +1,7 @@
 import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
-import { EMPTY_STR, PROD } from '@constants';
+import { EMPTY_STR, PROD, SPOT } from '@constants';
 import { isUserStream } from '@common';
 
 const generateSpotUserStreamKey = apiKey => {
@@ -27,8 +27,14 @@ const convertStream = (dataSource, selectStream, key) => {
   return isUserStream(dataSource) ? [key] : selectStream;
 };
 
-const getBase = env => {
-  return env === PROD ? endpoints.ws.spotBase : endpoints.ws.spotTestBase;
+const getBase = (env, type) => {
+  return env === PROD
+    ? type === SPOT
+      ? endpoints.ws.spotBase
+      : endpoints.ws.uFutureBase
+    : type === SPOT
+    ? endpoints.ws.spotTestBase
+    : endpoints.ws.uFutureTestBase;
 };
 
 const subscribeStream = env => {
@@ -38,7 +44,7 @@ const subscribeStream = env => {
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
-    const ws = new WebSocket(getBase(env));
+    const ws = new WebSocket(getBase(env, selectedStream.type));
     ws.onerror = wsOnError;
     ws.onclose = wsOnClose;
     ws.onopen = function () {
@@ -58,7 +64,7 @@ const subscribeStream = env => {
             id: 1
           })
         );
-        ws.close();
+        if (selectedStream.type === SPOT) ws.close();
       }, 3000);
     };
     ws.onmessage = function (e) {
@@ -81,7 +87,7 @@ const wsOnClose = () => {
   console.log('Connection closed.');
 };
 
-const selectStream = (dataSource, code) => {
+const selectStream = (type, dataSource, code) => {
   return (dispatch, getState) => {
     const { selectedStream } = getState();
     const codes = selectedStream.codes;
@@ -94,6 +100,7 @@ const selectStream = (dataSource, code) => {
       dispatch({
         type: types.SET_SELECTED_STREAM,
         payload: {
+          type: type,
           dataSource: dataSource,
           codes: streamList
         }

@@ -2,22 +2,27 @@ import { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { Modal, Form } from 'antd';
 import i18n from '../i18n';
-import { allTypeStreamList, symbols, intervals, levels } from '@constants';
-import { extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
+import { allTypeStreamList, symbols, futuresSymbols, intervals, levels } from '@constants';
+import { extractType, extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
 import PropTypes from 'prop-types';
 
 const { Option } = Select;
 const SYMBOL = 'symbol';
+const USYMBOL = 'usymbol';
 const INTERVAL = 'interval';
 const LEVEL = 'levels';
 
 function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) {
+  const [type, setType] = useState('');
   const [dataSource, setDataSource] = useState('');
   const [categoryData, setCategoryData] = useState({});
   const [streamData, setStreamData] = useState({ attributeList: [] });
   const [code, setCode] = useState('');
   const [lastAttributeValues, setLastAttributeValues] = useState({});
+  useEffect(() => {
+    setType(extractType(indexKey));
+  }, [indexKey, setType]);
   useEffect(() => {
     setDataSource(extractDataSource(indexKey));
   }, [indexKey, setDataSource]);
@@ -35,7 +40,7 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
   }, [setCode, streamData]);
 
   const processSymbolName = (attributeName, value) => {
-    return attributeName === SYMBOL ? value.toLowerCase() : value;
+    return attributeName === SYMBOL || attributeName === USYMBOL ? value.toLowerCase() : value;
   };
 
   const applyValue = (code, attributeName, value) => {
@@ -57,7 +62,7 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
         <Modal
           title={i18n.t(`streamName.${streamData.streamName}`)}
           visible={visible}
-          onOk={() => onOk(dataSource, code)}
+          onOk={() => onOk(type, dataSource, code)}
           onCancel={onCancel}
         >
           <Form>
@@ -69,6 +74,21 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
                   onChange={value => onAttributeChange(SYMBOL, value)}
                 >
                   {symbols.map(symbol => (
+                    <Option key={symbol} value={symbol}>
+                      {symbol}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            )}
+            {streamData.attributeList.includes(USYMBOL) && (
+              <Form.Item label="Symbol">
+                <Select
+                  showSearch
+                  style={{ width: 200 }}
+                  onChange={value => onAttributeChange(USYMBOL, value)}
+                >
+                  {futuresSymbols.map(symbol => (
                     <Option key={symbol} value={symbol}>
                       {symbol}
                     </Option>

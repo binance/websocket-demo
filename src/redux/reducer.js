@@ -1,21 +1,22 @@
 import initialState from './initials';
 import types from './types';
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
+export default function reducer(state = initialState, { type, payload }) {
+  switch (type) {
     case types.GENERATE_KEY_SPOT:
-      state.listenKey = action.payload;
+      state.listenKey = payload;
       break;
     case types.CLEAR_STREAM_MESSAGE:
       state.stream = [];
       break;
     case types.APPEND_STREAM_MESSAGE:
-      state.stream = [...state.stream, action.payload];
+      state.stream = [...state.stream, payload];
       break;
     case types.SET_SELECTED_STREAM:
       state.selectedStream = {
-        dataSource: action.payload.dataSource,
-        codes: action.payload.codes
+        type: payload.type,
+        dataSource: payload.dataSource,
+        codes: payload.codes
       };
       break;
     default:

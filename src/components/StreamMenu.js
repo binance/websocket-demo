@@ -10,6 +10,7 @@ import {
   isUserStream
 } from '@common';
 import { StreamSettingModal } from './';
+import { extractType } from '../assets/common';
 
 function StreamMenu({ actions }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,6 +19,7 @@ function StreamMenu({ actions }) {
   const onClickMenuItem = e => {
     setIndexKey(e.key);
     const key = e.key;
+    const type = extractType(key);
     const dataSource = extractDataSource(key);
     const streamData =
       allTypeStreamList[extractCategoryIndex(key)].streamList[extractStreamIndex(key)];
@@ -25,16 +27,16 @@ function StreamMenu({ actions }) {
       setIsModalVisible(true);
     } else {
       if (isUserStream(dataSource)) {
-        actions.selectUserStream(dataSource);
+        actions.selectUserStream(type, dataSource);
       } else {
-        actions.selectStream(dataSource, streamData.code);
+        actions.selectStream(type, dataSource, streamData.code);
       }
     }
   };
 
   const menu = useMemo(() => {
-    const handleOk = (dataSource, code) => {
-      if (code) actions.selectStream(dataSource, code);
+    const handleOk = (type, dataSource, code) => {
+      if (code) actions.selectStream(type, dataSource, code);
       setIsModalVisible(false);
     };
 
@@ -63,7 +65,12 @@ function StreamMenu({ actions }) {
               {streamType.streamList.map((stream, streamIndex) => {
                 return (
                   <Menu.Item
-                    key={generateStreamKey(streamType.dataSource, categoryIndex, streamIndex)}
+                    key={generateStreamKey(
+                      streamType.type,
+                      streamType.dataSource,
+                      categoryIndex,
+                      streamIndex
+                    )}
                   >
                     {i18n.t(`streamName.${stream.streamName}`)}
                   </Menu.Item>

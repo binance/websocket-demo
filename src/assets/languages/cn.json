@@ -11,7 +11,9 @@
     "allBookTicker": "全市场最优挂单信息",
     "partialBookDepth": "有限档深度信息",
     "diffBookDepth": "增量深度信息",
-    "userStream": "Websocket账户信息推送"
+    "userStream": "Websocket账户信息推送",
+    "markPriceStream": "最新标记价格",
+    "allMarkPriceStream": "全市场最新标记价格"
   },
   "label": {
     "generateKey": "生成 Listen Key",

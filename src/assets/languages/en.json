@@ -11,7 +11,9 @@
     "allBookTicker": "All Book Tickers Stream",
     "partialBookDepth": "Partial Book Depth Streams",
     "diffBookDepth": "Diff. Depth Stream",
-    "userStream": "User Data Streams"
+    "userStream": "User Data Streams",
+    "markPriceStream": "Mark Price Stream",
+    "allMarkPriceStream": "Mark Price Stream for All market"
   },
   "label": {
     "generateKey": "Generate Listen Key",
