@@ -20,6 +20,10 @@ export const intervals = [
   '1w',
   '1M'
 ];
+export const SYMBOL = 'symbol';
+export const USYMBOL = 'usymbol';
+export const INTERVAL = 'interval';
+export const LEVEL = 'levels';
 export const TESTNET = 'testnet';
 export const PROD = 'prod';
 export const SPOT = 'spot';

@@ -2,16 +2,22 @@ import { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { Modal, Form } from 'antd';
 import i18n from '../i18n';
-import { allTypeStreamList, symbols, futuresSymbols, intervals, levels } from '@constants';
+import {
+  SYMBOL,
+  USYMBOL,
+  INTERVAL,
+  LEVEL,
+  allTypeStreamList,
+  symbols,
+  futuresSymbols,
+  intervals,
+  levels
+} from '@constants';
 import { extractType, extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
 import PropTypes from 'prop-types';
 
 const { Option } = Select;
-const SYMBOL = 'symbol';
-const USYMBOL = 'usymbol';
-const INTERVAL = 'interval';
-const LEVEL = 'levels';
 
 function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) {
   const [type, setType] = useState('');
@@ -56,6 +62,24 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
     setCode(applyValue(code, attribute, value));
   };
 
+  const renderSelect = (attributeName, labelName, optionList) => {
+    return (
+      <Form.Item label={labelName}>
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          onChange={value => onAttributeChange(attributeName, value)}
+        >
+          {optionList.map(option => (
+            <Option key={option} value={option}>
+              {option}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
+    );
+  };
+
   return (
     <>
       {streamData && (
@@ -66,61 +90,12 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
           onCancel={onCancel}
         >
           <Form>
-            {streamData.attributeList.includes(SYMBOL) && (
-              <Form.Item label="Symbol">
-                <Select
-                  showSearch
-                  style={{ width: 200 }}
-                  onChange={value => onAttributeChange(SYMBOL, value)}
-                >
-                  {symbols.map(symbol => (
-                    <Option key={symbol} value={symbol}>
-                      {symbol}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            )}
-            {streamData.attributeList.includes(USYMBOL) && (
-              <Form.Item label="Symbol">
-                <Select
-                  showSearch
-                  style={{ width: 200 }}
-                  onChange={value => onAttributeChange(USYMBOL, value)}
-                >
-                  {futuresSymbols.map(symbol => (
-                    <Option key={symbol} value={symbol}>
-                      {symbol}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            )}
-            {streamData.attributeList.includes(INTERVAL) && (
-              <Form.Item label="Interval">
-                <Select
-                  style={{ width: 200 }}
-                  onChange={value => onAttributeChange(INTERVAL, value)}
-                >
-                  {intervals.map(interval => (
-                    <Option key={interval} value={interval}>
-                      {interval}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            )}
-            {streamData.attributeList.includes(LEVEL) && (
-              <Form.Item label="Level">
-                <Select style={{ width: 200 }} onChange={value => onAttributeChange(LEVEL, value)}>
-                  {levels.map(level => (
-                    <Option key={level} value={level}>
-                      {level}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-            )}
+            {streamData.attributeList.includes(SYMBOL) && renderSelect(SYMBOL, 'Symbol', symbols)}
+            {streamData.attributeList.includes(USYMBOL) &&
+              renderSelect(USYMBOL, 'Symbol', futuresSymbols)}
+            {streamData.attributeList.includes(INTERVAL) &&
+              renderSelect(INTERVAL, 'Interval', intervals)}
+            {streamData.attributeList.includes(LEVEL) && renderSelect(LEVEL, 'Level', levels)}
           </Form>
         </Modal>
       )}
