@@ -6,12 +6,16 @@ import {
   SYMBOL,
   USYMBOL,
   INTERVAL,
+  CONTRACT_TYPE,
+  PAIR,
   LEVEL,
   allTypeStreamList,
   symbols,
   futuresSymbols,
   intervals,
-  levels
+  levels,
+  pairs,
+  contractTypes
 } from '@constants';
 import { extractType, extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
@@ -46,7 +50,9 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
   }, [setCode, streamData]);
 
   const processSymbolName = (attributeName, value) => {
-    return attributeName === SYMBOL || attributeName === USYMBOL ? value.toLowerCase() : value;
+    return attributeName === SYMBOL || attributeName === USYMBOL || attributeName === PAIR
+      ? value.toLowerCase()
+      : value;
   };
 
   const applyValue = (code, attributeName, value) => {
@@ -93,6 +99,9 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
             {streamData.attributeList.includes(SYMBOL) && renderSelect(SYMBOL, 'Symbol', symbols)}
             {streamData.attributeList.includes(USYMBOL) &&
               renderSelect(USYMBOL, 'Symbol', futuresSymbols)}
+            {streamData.attributeList.includes(PAIR) && renderSelect(PAIR, 'Pair', pairs)}
+            {streamData.attributeList.includes(CONTRACT_TYPE) &&
+              renderSelect(CONTRACT_TYPE, 'Contract Type', contractTypes)}
             {streamData.attributeList.includes(INTERVAL) &&
               renderSelect(INTERVAL, 'Interval', intervals)}
             {streamData.attributeList.includes(LEVEL) && renderSelect(LEVEL, 'Level', levels)}

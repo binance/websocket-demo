@@ -110,6 +110,60 @@ const allTypeStreamList = [
         listenKey: false,
         code: '{usymbol}@kline_{interval}',
         attributeList: ['usymbol', 'interval']
+      },
+      {
+        streamName: 'continuousKline',
+        listenKey: false,
+        code: '{pair}_{contractType}@continuousKline_{interval}',
+        attributeList: ['pair', 'contractType', 'interval']
+      },
+      {
+        streamName: 'miniTicker',
+        listenKey: false,
+        code: '{usymbol}@miniTicker',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'allMarketMiniTicker',
+        listenKey: false,
+        code: '!miniTicker@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'ticker',
+        listenKey: false,
+        code: '{usymbol}@ticker',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'allMarketTicker',
+        listenKey: false,
+        code: '!ticker@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'bookTicker',
+        listenKey: false,
+        code: '{usymbol}@bookTicker',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'allBookTicker',
+        listenKey: false,
+        code: '!bookTicker',
+        attributeList: []
+      },
+      {
+        streamName: 'forceOrder',
+        listenKey: false,
+        code: '{usymbol}@forceOrder',
+        attributeList: ['usymbol']
+      },
+      {
+        streamName: 'allForceOrder',
+        listenKey: false,
+        code: '!forceOrder@arr',
+        attributeList: []
       }
     ]
   }

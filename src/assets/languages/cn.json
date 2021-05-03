@@ -13,7 +13,10 @@
     "diffBookDepth": "增量深度信息",
     "userStream": "Websocket账户信息推送",
     "markPriceStream": "最新标记价格",
-    "allMarkPriceStream": "全市场最新标记价格"
+    "allMarkPriceStream": "全市场最新标记价格",
+    "continuousKline": "连续合约K线",
+    "forceOrder": "强平订单",
+    "allForceOrder": "全市场强平订单"
   },
   "label": {
     "generateKey": "生成 Listen Key",

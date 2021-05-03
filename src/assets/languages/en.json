@@ -13,7 +13,10 @@
     "diffBookDepth": "Diff. Depth Stream",
     "userStream": "User Data Streams",
     "markPriceStream": "Mark Price Stream",
-    "allMarkPriceStream": "Mark Price Stream for All market"
+    "allMarkPriceStream": "Mark Price Stream for All market",
+    "continuousKline": "Continuous Contract Kline/Candlestick Streams",
+    "forceOrder": "Liquidation Order Streams",
+    "allForceOrder": "All Market Liquidation Order Streams"
   },
   "label": {
     "generateKey": "Generate Listen Key",
