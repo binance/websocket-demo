@@ -1,26 +1,28 @@
 import initialState from './initials';
 import types from './types';
+import produce from 'immer';
 
-export default function reducer(state = initialState, { type, payload }) {
+const reducer = produce((draft, { type, payload }) => {
   switch (type) {
     case types.GENERATE_KEY_SPOT:
-      state.listenKey = payload;
+      draft.listenKey = payload;
       break;
     case types.CLEAR_STREAM_MESSAGE:
-      state.stream = [];
+      draft.stream = [];
       break;
     case types.APPEND_STREAM_MESSAGE:
-      state.stream = [...state.stream, payload];
+      draft.stream.push(payload);
       break;
     case types.SET_SELECTED_STREAM:
-      state.selectedStream = {
+      draft.selectedStream = {
         type: payload.type,
         dataSource: payload.dataSource,
         codes: payload.codes
       };
       break;
     default:
-      return state;
+      break;
   }
-  return { ...state };
-}
+}, initialState);
+
+export default reducer;

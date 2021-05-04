@@ -36,7 +36,7 @@ function StreamMenu({ actions }) {
     }
   };
 
-  const menu = useMemo(() => {
+  const modal = useMemo(() => {
     const handleOk = (type, dataSource, code) => {
       if (code) actions.selectStream(type, dataSource, code);
       setIsModalVisible(false);
@@ -84,7 +84,7 @@ function StreamMenu({ actions }) {
           );
         })}
       </Menu>
-      {indexKey && menu}
+      {indexKey && modal}
     </>
   );
 }
