@@ -20,9 +20,13 @@
   },
   "label": {
     "generateKey": "生成 Listen Key",
-    "selectedStream": "已选数据流",
+    "market": "行情",
     "prodSubscribe": "生产环境订阅",
-    "testSubscribe": "测试环境订阅"
+    "selectedStream": "已选数据流",
+    "spot": "现货",
+    "testSubscribe": "测试环境订阅",
+    "uFutures": "U本位",
+    "user": "账户"
   },
   "message": {
     "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",

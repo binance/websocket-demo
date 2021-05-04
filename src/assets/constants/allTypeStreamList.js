@@ -84,7 +84,7 @@ const allTypeStreamList = [
     ]
   },
   {
-    type: 'u_futures',
+    type: 'uFutures',
     dataSource: 'market',
     streamList: [
       {

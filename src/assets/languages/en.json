@@ -20,9 +20,13 @@
   },
   "label": {
     "generateKey": "Generate Listen Key",
-    "selectedStream": "Selected Stream",
+    "market": "Market",
     "prodSubscribe": "PROD Subscribe",
-    "testSubscribe": "TESTNET Subscribe"
+    "selectedStream": "Selected Stream",
+    "spot": "Spot",
+    "testSubscribe": "TESTNET Subscribe",
+    "uFutures": "USDⓈ-M Futures",
+    "user": "User Data"
   },
   "message": {
     "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",

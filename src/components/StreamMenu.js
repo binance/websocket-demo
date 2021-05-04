@@ -12,6 +12,8 @@ import {
 import { StreamSettingModal } from './';
 import { extractType } from '../assets/common';
 
+const { SubMenu } = Menu;
+
 function StreamMenu({ actions }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [indexKey, setIndexKey] = useState('');
@@ -58,8 +60,10 @@ function StreamMenu({ actions }) {
       <Menu onClick={onClickMenuItem}>
         {allTypeStreamList.map((streamType, categoryIndex) => {
           return (
-            <Menu.ItemGroup
-              title={`${streamType.type} ${streamType.dataSource}`}
+            <SubMenu
+              title={`${i18n.t(`label.${streamType.type}`)} ${i18n.t(
+                `label.${streamType.dataSource}`
+              )}`}
               key={streamType.type + '-' + categoryIndex}
             >
               {streamType.streamList.map((stream, streamIndex) => {
@@ -76,7 +80,7 @@ function StreamMenu({ actions }) {
                   </Menu.Item>
                 );
               })}
-            </Menu.ItemGroup>
+            </SubMenu>
           );
         })}
       </Menu>
