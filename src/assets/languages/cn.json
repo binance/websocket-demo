@@ -16,7 +16,9 @@
     "allMarkPriceStream": "全市场最新标记价格",
     "continuousKline": "连续合约K线",
     "forceOrder": "强平订单",
-    "allForceOrder": "全市场强平订单"
+    "allForceOrder": "全市场强平订单",
+    "partialDepth": "有限档深度信息",
+    "diffDepth": "增量深度信息"
   },
   "label": {
     "generateKey": "生成 Listen Key",

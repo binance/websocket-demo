@@ -164,6 +164,18 @@ const allTypeStreamList = [
         listenKey: false,
         code: '!forceOrder@arr',
         attributeList: []
+      },
+      {
+        streamName: 'partialDepth',
+        listenKey: false,
+        code: '{usymbol}@depth{levels}@500ms',
+        attributeList: ['usymbol', 'levels']
+      },
+      {
+        streamName: 'diffDepth',
+        listenKey: false,
+        code: '{usymbol}@depth@500ms',
+        attributeList: ['usymbol']
       }
     ]
   }
