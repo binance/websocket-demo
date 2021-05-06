@@ -178,6 +178,120 @@ const allTypeStreamList = [
         attributeList: ['usymbol']
       }
     ]
+  },
+  {
+    type: 'cFutures',
+    dataSource: 'market',
+    streamList: [
+      {
+        streamName: 'aggregateTrade',
+        listenKey: false,
+        code: '{csymbol}@aggTrade',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'indexPrice',
+        listenKey: false,
+        code: '{cpair}@indexPrice',
+        attributeList: ['cpair']
+      },
+      {
+        streamName: 'markPrice',
+        listenKey: false,
+        code: '{csymbol}@markPrice',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'pairMarkPrice',
+        listenKey: false,
+        code: '{cpair}@markPrice',
+        attributeList: ['cpair']
+      },
+      {
+        streamName: 'kline',
+        listenKey: false,
+        code: '{csymbol}@kline_{interval}',
+        attributeList: ['csymbol', 'interval']
+      },
+      {
+        streamName: 'continuousKline',
+        listenKey: false,
+        code: '{cpair}_{contractType}@continuousKline_{interval}',
+        attributeList: ['cpair', 'contractType', 'interval']
+      },
+      {
+        streamName: 'indexKline',
+        listenKey: false,
+        code: '{cpair}@indexPriceKline_{interval}',
+        attributeList: ['cpair', 'interval']
+      },
+      {
+        streamName: 'markKline',
+        listenKey: false,
+        code: '{csymbol}@markPriceKline_{interval}',
+        attributeList: ['csymbol', 'interval']
+      },
+      {
+        streamName: 'miniTicker',
+        listenKey: false,
+        code: '{csymbol}@miniTicker',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'allMarketMiniTicker',
+        listenKey: false,
+        code: '!miniTicker@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'ticker',
+        listenKey: false,
+        code: '{csymbol}@ticker',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'allMarketTicker',
+        listenKey: false,
+        code: '!ticker@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'bookTicker',
+        listenKey: false,
+        code: '{csymbol}@bookTicker',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'allBookTicker',
+        listenKey: false,
+        code: '!bookTicker',
+        attributeList: []
+      },
+      {
+        streamName: 'forceOrder',
+        listenKey: false,
+        code: '{csymbol}@forceOrder',
+        attributeList: ['csymbol']
+      },
+      {
+        streamName: 'allForceOrder',
+        listenKey: false,
+        code: '!forceOrder@arr',
+        attributeList: []
+      },
+      {
+        streamName: 'partialDepth',
+        listenKey: false,
+        code: '{csymbol}@depth{levels}@500ms',
+        attributeList: ['csymbol', 'levels']
+      },
+      {
+        streamName: 'diffDepth',
+        listenKey: false,
+        code: '{csymbol}@depth@500ms',
+        attributeList: ['csymbol']
+      }
+    ]
   }
 ];
 

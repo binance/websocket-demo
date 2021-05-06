@@ -1,7 +1,7 @@
 import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
-import { EMPTY_STR, PROD, SPOT } from '@constants';
+import { EMPTY_STR, PROD, SPOT, UFUTURES, CFUTURES } from '@constants';
 import { isUserStream } from '@common';
 
 const generateSpotUserStreamKey = apiKey => {
@@ -28,13 +28,16 @@ const convertStream = (dataSource, selectStream, key) => {
 };
 
 const getBase = (env, type) => {
-  return env === PROD
-    ? type === SPOT
-      ? endpoints.ws.spotBase
-      : endpoints.ws.uFutureBase
-    : type === SPOT
-    ? endpoints.ws.spotTestBase
-    : endpoints.ws.uFutureTestBase;
+  switch (type) {
+    case SPOT:
+      return env === PROD ? endpoints.ws.spotBase : endpoints.ws.spotTestBase;
+    case UFUTURES:
+      return env === PROD ? endpoints.ws.uFutureBase : endpoints.ws.uFutureTestBase;
+    case CFUTURES:
+      return env === PROD ? endpoints.ws.cFutureBase : endpoints.ws.cFutureTestBase;
+    default:
+      return EMPTY_STR;
+  }
 };
 
 const subscribeStream = env => {

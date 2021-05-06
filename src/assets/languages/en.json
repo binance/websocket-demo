@@ -18,9 +18,15 @@
     "forceOrder": "Liquidation Order Streams",
     "allForceOrder": "All Market Liquidation Order Streams",
     "partialDepth": "Partial Book Depth Streams",
-    "diffDepth": "Diff. Book Depth Streams"
+    "diffDepth": "Diff. Book Depth Streams",
+    "indexPrice": "Index Price Stream",
+    "markPrice": "Mark Price Stream",
+    "pairMarkPrice": "Mark Price of All Symbols of a Pair",
+    "indexKline": "Index Kline/Candlestick Streams",
+    "markKline": "Mark Price Kline/Candlestick Streams"
   },
   "label": {
+    "cFutures": "COIN-M Futures",
     "generateKey": "Generate Listen Key",
     "market": "Market",
     "prodSubscribe": "PROD Subscribe",

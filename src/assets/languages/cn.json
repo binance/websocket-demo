@@ -18,16 +18,22 @@
     "forceOrder": "强平订单",
     "allForceOrder": "全市场强平订单",
     "partialDepth": "有限档深度信息",
-    "diffDepth": "增量深度信息"
+    "diffDepth": "增量深度信息",
+    "indexPrice": "最新现货指数价格",
+    "markPrice": "最新MarkPrice",
+    "pairMarkPrice": "pair所有symbol最新MarkPrice",
+    "indexKline": "价格指数K线",
+    "markKline": "标记价格K线"
   },
   "label": {
+    "cFutures": "币本位合约",
     "generateKey": "生成 Listen Key",
     "market": "行情",
     "prodSubscribe": "生产环境订阅",
     "selectedStream": "已选数据流",
     "spot": "现货",
     "testSubscribe": "测试环境订阅",
-    "uFutures": "U本位",
+    "uFutures": "U本位合约",
     "user": "账户"
   },
   "message": {

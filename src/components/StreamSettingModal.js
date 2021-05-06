@@ -5,16 +5,20 @@ import i18n from '../i18n';
 import {
   SYMBOL,
   USYMBOL,
+  CSYMBOL,
   INTERVAL,
   CONTRACT_TYPE,
+  CPAIR,
   PAIR,
   LEVEL,
   allTypeStreamList,
   symbols,
   futuresSymbols,
+  cSymbols,
   intervals,
   levels,
   pairs,
+  cPairs,
   contractTypes
 } from '@constants';
 import { extractType, extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
@@ -49,10 +53,9 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
     streamData && setCode(streamData.code);
   }, [setCode, streamData]);
 
+  const conversionRequired = [SYMBOL, USYMBOL, PAIR, CSYMBOL, CPAIR];
   const processSymbolName = (attributeName, value) => {
-    return attributeName === SYMBOL || attributeName === USYMBOL || attributeName === PAIR
-      ? value.toLowerCase()
-      : value;
+    return conversionRequired.includes(attributeName) ? value.toLowerCase() : value;
   };
 
   const applyValue = (code, attributeName, value) => {
@@ -99,7 +102,10 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
             {streamData.attributeList.includes(SYMBOL) && renderSelect(SYMBOL, 'Symbol', symbols)}
             {streamData.attributeList.includes(USYMBOL) &&
               renderSelect(USYMBOL, 'Symbol', futuresSymbols)}
+            {streamData.attributeList.includes(CSYMBOL) &&
+              renderSelect(CSYMBOL, 'Symbol', cSymbols)}
             {streamData.attributeList.includes(PAIR) && renderSelect(PAIR, 'Pair', pairs)}
+            {streamData.attributeList.includes(CPAIR) && renderSelect(CPAIR, 'Pair', cPairs)}
             {streamData.attributeList.includes(CONTRACT_TYPE) &&
               renderSelect(CONTRACT_TYPE, 'Contract Type', contractTypes)}
             {streamData.attributeList.includes(INTERVAL) &&

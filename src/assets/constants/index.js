@@ -1,7 +1,9 @@
 export { default as allTypeStreamList } from './allTypeStreamList.js';
 export { default as symbols } from './symbols.js';
 export { default as futuresSymbols } from './futuresSymbols.js';
+export { default as cSymbols } from './cSymbols.js';
 export { default as pairs } from './pairs.js';
+export { default as cPairs } from './cPairs.js';
 export const EMPTY_STR = '';
 export const levels = [5, 10, 20];
 export const intervals = [
@@ -23,11 +25,15 @@ export const intervals = [
 ];
 export const SYMBOL = 'symbol';
 export const USYMBOL = 'usymbol';
+export const CSYMBOL = 'csymbol';
 export const PAIR = 'pair';
+export const CPAIR = 'cpair';
 export const CONTRACT_TYPE = 'contractType';
 export const INTERVAL = 'interval';
 export const LEVEL = 'levels';
 export const TESTNET = 'testnet';
 export const PROD = 'prod';
 export const SPOT = 'spot';
+export const UFUTURES = 'uFutures';
+export const CFUTURES = 'cFutures';
 export const contractTypes = ['perpetual', 'current_quarter', 'next_quarter'];
