@@ -96,6 +96,7 @@ const selectStream = (type, dataSource, code) => {
     const codes = selectedStream.codes;
     const streamList = [...codes];
     if (
+      (selectedStream.type === EMPTY_STR || selectedStream.type === type) &&
       (selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource) &&
       streamList.indexOf(code) === -1
     ) {
@@ -112,10 +113,11 @@ const selectStream = (type, dataSource, code) => {
   };
 };
 
-const selectUserStream = dataSource => {
+const selectUserStream = (type, dataSource) => {
   return {
     type: types.SET_SELECTED_STREAM,
     payload: {
+      type: type,
       dataSource: dataSource,
       codes: ['user data']
     }
@@ -132,6 +134,7 @@ const removeSelectedStream = code => {
     dispatch({
       type: types.SET_SELECTED_STREAM,
       payload: {
+        type: streamList.length ? selectedStream.type : EMPTY_STR,
         dataSource: streamList.length ? selectedStream.dataSource : EMPTY_STR,
         codes: streamList
       }
