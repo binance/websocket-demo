@@ -95,6 +95,7 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
         <Modal
           title={i18n.t(`streamName.${streamData.streamName}`)}
           visible={visible}
+          destroyOnClose={true}
           onOk={() => onOk(type, dataSource, code)}
           onCancel={onCancel}
         >
