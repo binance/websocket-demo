@@ -28,6 +28,7 @@
   "label": {
     "cFutures": "COIN-M Futures",
     "generateKey": "Generate Listen Key",
+    "info": "Notice",
     "market": "Market",
     "prodSubscribe": "PROD Subscribe",
     "selectedStream": "Selected Stream",
@@ -37,6 +38,8 @@
     "user": "User Data"
   },
   "message": {
+    "restriction1": "1. Each subscription lasts 3 secs.",
+    "restriction2": "2. Cross-category subscription is not allowed.",
     "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",
     "selectStream": "Choose a stream to subscribe"
   }

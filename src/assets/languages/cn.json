@@ -28,6 +28,7 @@
   "label": {
     "cFutures": "币本位合约",
     "generateKey": "生成 Listen Key",
+    "info": "注意",
     "market": "行情",
     "prodSubscribe": "生产环境订阅",
     "selectedStream": "已选数据流",
@@ -37,6 +38,8 @@
     "user": "账户"
   },
   "message": {
+    "restriction1": "1. 每次订阅时限为3秒。",
+    "restriction2": "2. 不支援跨类别数据流。",
     "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",
     "selectStream": "选择数据流"
   }

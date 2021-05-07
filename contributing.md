@@ -152,7 +152,6 @@ You are always welcome to discuss and propose improvements to this guideline.
 
 ## Pending development tasks:
 
-1. Add info section to highlight the application behaviours, such as automatic unsubscription, no cross category subscription allowed, etc.
-2. Add listen key generation logic to futures user data streams.
-3. Increase stroybook component coverage.
-4. Introduce testing with jest.
+1. Add listen key generation logic to futures user data streams.
+2. Increase stroybook component coverage.
+3. Introduce testing with jest.
