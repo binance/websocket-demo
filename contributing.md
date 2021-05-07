@@ -35,6 +35,7 @@ experience the problem? What would you expect to be the outcome? All these detai
 Example:
 
 > ## Description
+>
 > A clear and concise description of what the bug is.
 >
 > Any other information you want to share that is relevant to the issue being
@@ -43,6 +44,7 @@ Example:
 > merits).
 >
 > ## Steps to reproduce
+>
 > Steps to reproduce the behavior:
 >
 > 1.  This is the first step
@@ -147,3 +149,11 @@ There are few basic rules to ensure high code quality:
 - A PR should remain open for at least 2 days before merging (does not apply for trivial contributions like fixing a typo). This way everyone has enough time to look into it.
 
 You are always welcome to discuss and propose improvements to this guideline.
+
+## Pending development tasks:
+
+1. Change the modal rendering mechanism so that whenever a modal is opened, the options are in its default position.
+2. Add info section to highlight the application behaviours, such as automatic unsubscription, no cross category subscription allowed, etc.
+3. Add listen key generation logic to futures user data streams.
+4. Increase stroybook component coverage.
+5. Introduce testing with jest.
