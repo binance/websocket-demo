@@ -36,10 +36,8 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
   const [lastAttributeValues, setLastAttributeValues] = useState({});
   useEffect(() => {
     setType(extractType(indexKey));
-  }, [indexKey, setType]);
-  useEffect(() => {
     setDataSource(extractDataSource(indexKey));
-  }, [indexKey, setDataSource]);
+  }, [indexKey, setType, setDataSource]);
   useEffect(() => {
     setCategoryData(allTypeStreamList[extractCategoryIndex(indexKey)]);
   }, [indexKey, setCategoryData]);
@@ -48,7 +46,6 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
       setStreamData(categoryData.streamList[extractStreamIndex(indexKey)]);
     }
   }, [indexKey, categoryData, setStreamData]);
-
   useEffect(() => {
     streamData && setCode(streamData.code);
   }, [setCode, streamData]);

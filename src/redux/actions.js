@@ -90,14 +90,22 @@ const wsOnClose = () => {
   console.log('Connection closed.');
 };
 
+const isSameType = (type, selectedStream) => {
+  return selectedStream.type === EMPTY_STR || selectedStream.type === type;
+};
+
+const isSameDataSource = (dataSource, selectedStream) => {
+  return selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource;
+};
+
 const selectStream = (type, dataSource, code) => {
   return (dispatch, getState) => {
     const { selectedStream } = getState();
     const codes = selectedStream.codes;
     const streamList = [...codes];
     if (
-      (selectedStream.type === EMPTY_STR || selectedStream.type === type) &&
-      (selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource) &&
+      isSameType(type, selectedStream) &&
+      isSameDataSource(dataSource, selectedStream) &&
       streamList.indexOf(code) === -1
     ) {
       streamList.push(code);
