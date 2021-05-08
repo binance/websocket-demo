@@ -2,7 +2,7 @@ import React from 'react';
 import { SubscriptionPanel } from '../components';
 
 export default {
-  title: 'Example/SubscriptionPanel',
+  title: 'Websocket Demo Page/ SubscriptionPanel',
   component: SubscriptionPanel,
   argTypes: {
     stream: []

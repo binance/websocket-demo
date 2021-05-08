@@ -17,7 +17,7 @@ function SelectionPanel({ actions, listenKey, selectedStream }) {
         type="info"
         showIcon
         closable
-        style={{ 'margin-bottom': '10px' }}
+        style={{ marginBottom: '10px' }}
       />
       <KeyPanel listenKey={listenKey} actions={actions} />
       <Divider orientation="left" plain />

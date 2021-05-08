@@ -2,7 +2,7 @@ import React from 'react';
 import { StreamSettingModal } from '../components';
 
 export default {
-  title: 'Example/StreamSettingModal',
+  title: 'Websocket Demo Page/ StreamSettingModal',
   component: StreamSettingModal,
   argTypes: {
     indexKey: '',

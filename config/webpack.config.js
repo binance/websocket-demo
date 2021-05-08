@@ -315,6 +315,7 @@ module.exports = function (webpackEnv) {
         'react-native': 'react-native-web',
         '@common': path.resolve(__dirname, '../src/assets/common'),
         '@constants': path.resolve(__dirname, '../src/assets/constants'),
+        '@ant-design/icons/lib/dist$': path.resolve(__dirname, './src/assets/icons.js'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',

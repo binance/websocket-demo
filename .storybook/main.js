@@ -11,7 +11,8 @@ module.exports = {
         alias: {
           ...config.resolve?.alias,
           '@common': path.resolve(__dirname, '../src/assets/common'),
-          '@constants': path.resolve(__dirname, '../src/assets/constants')
+          '@constants': path.resolve(__dirname, '../src/assets/constants'),
+          '@ant-design/icons/lib/dist$': path.resolve(__dirname, '../src/assets/icons.js')
         }
       }
     };
