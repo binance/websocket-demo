@@ -11,6 +11,7 @@ import {
 } from '@common';
 import { StreamSettingModal } from './';
 import { extractType } from '../assets/common';
+import PropTypes from 'prop-types';
 
 const { SubMenu } = Menu;
 
@@ -88,4 +89,9 @@ function StreamMenu({ actions }) {
     </>
   );
 }
+
+StreamMenu.propTypes = {
+  actions: PropTypes.object
+};
+
 export default StreamMenu;

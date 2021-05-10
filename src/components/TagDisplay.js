@@ -1,8 +1,9 @@
 import { Tag, Typography } from 'antd';
 import i18n from '../i18n';
+import PropTypes from 'prop-types';
 
 const { Title } = Typography;
-function TagDisplay({ actions, tags }) {
+function TagDisplay({ actions, tags = [] }) {
   return (
     <>
       <Title level={5}>{i18n.t('label.selectedStream')}</Title>
@@ -22,4 +23,13 @@ function TagDisplay({ actions, tags }) {
     </>
   );
 }
+
+TagDisplay.propTypes = {
+  actions: PropTypes.object,
+  /**
+   * stream selected by the user
+   */
+  tags: PropTypes.arrayOf(PropTypes.string)
+};
+
 export default TagDisplay;
