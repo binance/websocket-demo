@@ -10,6 +10,8 @@ The left hand side of the screen has 2 parts. The upper is the key generation se
 
 - [Binance API doc](https://binance-docs.github.io/apidocs/spot/en/#websocket-market-streams)
 
+- [Current Deployed Page](https://binance-exchange.github.io/websocket-demo)
+
 ### Available Scripts
 
 In the project directory, you can run:
