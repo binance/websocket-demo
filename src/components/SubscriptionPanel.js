@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import './SubscriptionPanel.css';
 
 function SubscriptionPanel({ stream = [] }) {
+  const divRef = useRef();
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }, [stream]);
   return (
     <div className="terminal">
       {stream.length ? (
@@ -9,6 +14,7 @@ function SubscriptionPanel({ stream = [] }) {
       ) : (
         <p>{'> Subscription Panel'}</p>
       )}
+      <div ref={divRef}></div>
     </div>
   );
 }

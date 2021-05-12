@@ -68,6 +68,10 @@ const subscribeStream = env => {
           })
         );
         if (selectedStream.type === SPOT) ws.close();
+        dispatch({
+          type: types.APPEND_STREAM_MESSAGE,
+          payload: 'End of subscription.'
+        });
       }, 3000);
     };
     ws.onmessage = function (e) {
