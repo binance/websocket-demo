@@ -20,7 +20,7 @@ function MarketStreamPanel({ actions, selectedStream, hasKey }) {
     <>
       <Title level={5}>{i18n.t('label.marketStream')}</Title>
       <TagDisplay actions={actions} tags={selectedStream.codes} />
-      <div>
+      <div style={{ marginTop: '10px', marginBottom: '10px' }}>
         <Dropdown overlay={<StreamMenu actions={actions} />}>
           <span>
             {i18n.t('message.selectStream')} <DownOutlined />

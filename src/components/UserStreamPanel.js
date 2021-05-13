@@ -16,7 +16,7 @@ function UserStreamPanel({ listenKey, actions }) {
     actions.selectUserStream(value);
   };
 
-  const onClickSubscribe = async env => {
+  const onClickSubscribe = env => {
     actions.subscribeUserStream(key, env);
   };
 
@@ -36,13 +36,10 @@ function UserStreamPanel({ listenKey, actions }) {
             ))}
           </Select>
         </Form.Item>
+        <Form.Item label="Listen Key" name="Listen Key">
+          {listenKey && <Text keyboard>{listenKey}</Text>}
+        </Form.Item>
       </Form>
-      <Title level={5}>Listen Key</Title>
-      {listenKey && (
-        <div>
-          <Text keyboard>{listenKey}</Text>
-        </div>
-      )}
       <Button
         disabled={true}
         type="default"
