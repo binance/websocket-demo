@@ -1,6 +1,8 @@
 const endpoints = {
   api: {
-    spotListenKey: `/api/v3/userDataStream`
+    spotListenKey: `/api/v3/userDataStream`,
+    uFutureListenKey: `/fapi/v1/listenKey`,
+    cFutureListenKey: `/dapi/v1/listenKey`
   },
   ws: {
     spotBase: `wss://stream.binance.com:9443/stream`,

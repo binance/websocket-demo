@@ -30,8 +30,8 @@ function UserStreamPanel({ listenKey, actions }) {
         <Form.Item label="Source" name="source">
           <Select placeholder={i18n.t('message.selectStream')} onChange={onSelectChange}>
             {allUserStreams.map(stream => (
-              <Option key={stream.type} value={stream.type}>
-                {i18n.t(`label.${stream.type}`)}
+              <Option key={stream} value={stream}>
+                {i18n.t(`label.${stream}`)}
               </Option>
             ))}
           </Select>
@@ -43,7 +43,12 @@ function UserStreamPanel({ listenKey, actions }) {
           <Text keyboard>{listenKey}</Text>
         </div>
       )}
-      <Button type="default" style={{ margin: '5px' }} onClick={() => onClickSubscribe(TESTNET)}>
+      <Button
+        disabled={true}
+        type="default"
+        style={{ margin: '5px' }}
+        onClick={() => onClickSubscribe(TESTNET)}
+      >
         {i18n.t('label.testSubscribe')}
       </Button>
       <Button type="primary" style={{ margin: '5px' }} onClick={() => onClickSubscribe(PROD)}>

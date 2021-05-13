@@ -1,15 +1,2 @@
-const allUserStreams = [
-  {
-    type: 'spot',
-    dataSource: 'user',
-    streamList: [
-      {
-        streamName: 'userStream',
-        listenKey: true,
-        code: '',
-        attributeList: []
-      }
-    ]
-  }
-];
+const allUserStreams = ['spot', 'uFutures', 'cFutures'];
 export default allUserStreams;

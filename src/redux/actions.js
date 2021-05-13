@@ -2,12 +2,11 @@ import types from './types';
 import { post } from '../services/request';
 import endpoints from '../endpoints';
 import { EMPTY_STR, PROD, SPOT, UFUTURES, CFUTURES } from '@constants';
-import { isUserStream } from '@common';
 
-const generateSpotUserStreamKey = apiKey => {
+const generateUserStreamKey = (type, apiKey) => {
   return async dispatch => {
     try {
-      const data = await post(endpoints.api.spotListenKey, null, {
+      const data = await post(getListenKeyEndpoint(type), null, {
         headers: {
           'Content-Type': 'application/json',
           'X-MBX-APIKEY': apiKey
@@ -23,8 +22,17 @@ const generateSpotUserStreamKey = apiKey => {
   };
 };
 
-const convertStream = (dataSource, selectStream, key) => {
-  return isUserStream(dataSource) ? [key] : selectStream;
+const getListenKeyEndpoint = type => {
+  switch (type) {
+    case SPOT:
+      return endpoints.api.spotListenKey;
+    case UFUTURES:
+      return endpoints.api.uFutureListenKey;
+    case CFUTURES:
+      return endpoints.api.cFutureListenKey;
+    default:
+      return EMPTY_STR;
+  }
 };
 
 const getBase = (env, type) => {
@@ -42,17 +50,17 @@ const getBase = (env, type) => {
 
 const subscribeUserStream = (apiKey, env) => {
   return async (dispatch, getState) => {
-    await dispatch(generateSpotUserStreamKey(apiKey));
-    const { listenKey, selectedUserStream } = getState();
+    const { selectedUserStream } = getState();
+    await dispatch(generateUserStreamKey(selectedUserStream, apiKey));
+    const { listenKey } = getState();
     dispatch(subscribeStream(env, selectedUserStream, [listenKey]));
   };
 };
 
 const subscribeMarketStream = env => {
   return async (dispatch, getState) => {
-    const { listenKey, selectedStream } = getState();
-    const streams = convertStream(selectedStream.dataSource, selectedStream.codes, listenKey);
-    dispatch(subscribeStream(env, selectedStream.type, streams));
+    const { selectedStream } = getState();
+    dispatch(subscribeStream(env, selectedStream.type, selectedStream.codes));
   };
 };
 
@@ -165,7 +173,7 @@ const removeSelectedStream = code => {
 };
 
 const actions = {
-  generateSpotUserStreamKey,
+  generateUserStreamKey,
   selectStream,
   selectUserStream,
   removeSelectedStream,

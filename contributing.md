@@ -152,6 +152,7 @@ You are always welcome to discuss and propose improvements to this guideline.
 
 ## Pending development tasks:
 
-1. Add listen key generation logic to futures user data streams.
-2. Increase stroybook component coverage.
-3. Introduce testing with jest.
+1. Add testnet listen key generation logic to futures user data streams.
+2. Add error message popup when the user selects the stream different from the selected category. After adding this, the notice on the top can be removed.
+3. Increase stroybook component coverage.
+4. Introduce testing with jest.
