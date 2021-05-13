@@ -1,4 +1,4 @@
-const allTypeStreamList = [
+const allMarketStreams = [
   {
     type: 'spot',
     dataSource: 'market',
@@ -68,18 +68,6 @@ const allTypeStreamList = [
         listenKey: false,
         code: '{symbol}@depth',
         attributeList: ['symbol']
-      }
-    ]
-  },
-  {
-    type: 'spot',
-    dataSource: 'user',
-    streamList: [
-      {
-        streamName: 'userStream',
-        listenKey: true,
-        code: '',
-        attributeList: []
       }
     ]
   },
@@ -295,4 +283,4 @@ const allTypeStreamList = [
   }
 ];
 
-export default allTypeStreamList;
+export default allMarketStreams;

@@ -11,7 +11,7 @@ import {
   CPAIR,
   PAIR,
   LEVEL,
-  allTypeStreamList,
+  allMarketStreams,
   symbols,
   futuresSymbols,
   cSymbols,
@@ -39,7 +39,7 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
     setDataSource(extractDataSource(indexKey));
   }, [indexKey, setType, setDataSource]);
   useEffect(() => {
-    setCategoryData(allTypeStreamList[extractCategoryIndex(indexKey)]);
+    setCategoryData(allMarketStreams[extractCategoryIndex(indexKey)]);
   }, [indexKey, setCategoryData]);
   useEffect(() => {
     if (categoryData.streamList) {

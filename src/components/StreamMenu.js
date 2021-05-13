@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
-import { allTypeStreamList } from '@constants';
+import { allMarketStreams } from '@constants';
 import {
   extractCategoryIndex,
   extractDataSource,
@@ -25,7 +25,7 @@ function StreamMenu({ actions }) {
     const type = extractType(key);
     const dataSource = extractDataSource(key);
     const streamData =
-      allTypeStreamList[extractCategoryIndex(key)].streamList[extractStreamIndex(key)];
+      allMarketStreams[extractCategoryIndex(key)].streamList[extractStreamIndex(key)];
     if (streamData.attributeList.length) {
       setIsModalVisible(true);
     } else {
@@ -59,12 +59,10 @@ function StreamMenu({ actions }) {
   return (
     <>
       <Menu onClick={onClickMenuItem}>
-        {allTypeStreamList.map((streamType, categoryIndex) => {
+        {allMarketStreams.map((streamType, categoryIndex) => {
           return (
             <SubMenu
-              title={`${i18n.t(`label.${streamType.type}`)} ${i18n.t(
-                `label.${streamType.dataSource}`
-              )}`}
+              title={`${i18n.t(`label.${streamType.type}`)}`}
               key={streamType.type + '-' + categoryIndex}
             >
               {streamType.streamList.map((stream, streamIndex) => {

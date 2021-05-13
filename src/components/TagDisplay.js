@@ -6,7 +6,7 @@ const { Title } = Typography;
 function TagDisplay({ actions, tags = [] }) {
   return (
     <>
-      <Title level={5}>{i18n.t('label.selectedStream')}</Title>
+      <Title level={5}>{i18n.t('label.marketStream')}</Title>
       <div>
         {tags &&
           tags.map(tag => (

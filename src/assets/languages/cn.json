@@ -31,7 +31,7 @@
     "info": "注意",
     "market": "行情",
     "prodSubscribe": "生产环境订阅",
-    "selectedStream": "已选数据流",
+    "marketStream": "行情数据流",
     "spot": "现货",
     "testSubscribe": "测试环境订阅",
     "uFutures": "U本位合约",
