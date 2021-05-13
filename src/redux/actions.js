@@ -40,14 +40,28 @@ const getBase = (env, type) => {
   }
 };
 
-const subscribeStream = env => {
+const subscribeUserStream = (apiKey, env) => {
+  return async (dispatch, getState) => {
+    await dispatch(generateSpotUserStreamKey(apiKey));
+    const { listenKey, selectedUserStream } = getState();
+    dispatch(subscribeStream(env, selectedUserStream, [listenKey]));
+  };
+};
+
+const subscribeMarketStream = env => {
   return async (dispatch, getState) => {
     const { listenKey, selectedStream } = getState();
     const streams = convertStream(selectedStream.dataSource, selectedStream.codes, listenKey);
+    dispatch(subscribeStream(env, selectedStream.type, streams));
+  };
+};
+
+const subscribeStream = (env, type, streams) => {
+  return async dispatch => {
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
-    const ws = new WebSocket(getBase(env, selectedStream.type));
+    const ws = new WebSocket(getBase(env, type));
     ws.onerror = wsOnError;
     ws.onclose = wsOnClose;
     ws.onopen = function () {
@@ -67,7 +81,7 @@ const subscribeStream = env => {
             id: 1
           })
         );
-        if (selectedStream.type === SPOT) ws.close();
+        ws.close();
         dispatch({
           type: types.APPEND_STREAM_MESSAGE,
           payload: 'End of subscription.'
@@ -125,14 +139,10 @@ const selectStream = (type, dataSource, code) => {
   };
 };
 
-const selectUserStream = (type, dataSource) => {
+const selectUserStream = type => {
   return {
-    type: types.SET_SELECTED_STREAM,
-    payload: {
-      type: type,
-      dataSource: dataSource,
-      codes: ['user data']
-    }
+    type: types.SET_USER_STREAM,
+    payload: { type: type }
   };
 };
 
@@ -159,6 +169,7 @@ const actions = {
   selectStream,
   selectUserStream,
   removeSelectedStream,
-  subscribeStream
+  subscribeMarketStream,
+  subscribeUserStream
 };
 export default actions;

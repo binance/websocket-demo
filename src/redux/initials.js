@@ -6,6 +6,7 @@ const initials = {
     dataSource: EMPTY_STR,
     codes: []
   },
+  selectedUserStream: EMPTY_STR,
   stream: []
 };
 export default initials;

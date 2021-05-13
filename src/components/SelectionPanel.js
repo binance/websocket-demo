@@ -1,6 +1,6 @@
 import { Alert, Divider } from 'antd';
 import i18n from '../i18n';
-import { KeyPanel, StreamPanel } from './';
+import { UserStreamPanel, MarketStreamPanel } from './';
 
 function SelectionPanel({ actions, listenKey, selectedStream }) {
   const description = (
@@ -19,9 +19,9 @@ function SelectionPanel({ actions, listenKey, selectedStream }) {
         closable
         style={{ marginBottom: '10px' }}
       />
-      <KeyPanel listenKey={listenKey} actions={actions} />
+      <UserStreamPanel listenKey={listenKey} actions={actions} />
       <Divider orientation="left" plain />
-      <StreamPanel actions={actions} selectedStream={selectedStream} hasKey={!!listenKey} />
+      <MarketStreamPanel actions={actions} selectedStream={selectedStream} hasKey={!!listenKey} />
     </>
   );
 }

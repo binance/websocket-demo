@@ -11,7 +11,6 @@
     "allBookTicker": "All Book Tickers Stream",
     "partialBookDepth": "Partial Book Depth Streams",
     "diffBookDepth": "Diff. Depth Stream",
-    "userStream": "User Data Streams",
     "markPriceStream": "Mark Price Stream",
     "allMarkPriceStream": "Mark Price Stream for All market",
     "continuousKline": "Continuous Contract Kline/Candlestick Streams",
@@ -35,7 +34,8 @@
     "spot": "Spot",
     "testSubscribe": "TESTNET Subscribe",
     "uFutures": "USDⓈ-M Futures",
-    "user": "User Data"
+    "user": "User Data",
+    "userStream": "User Data Streams"
   },
   "message": {
     "restriction1": "1. Each subscription lasts 3 secs.",

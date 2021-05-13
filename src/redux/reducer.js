@@ -20,6 +20,9 @@ const reducer = produce((draft, { type, payload }) => {
         codes: payload.codes
       };
       break;
+    case types.SET_USER_STREAM:
+      draft.selectedUserStream = payload.type;
+      break;
     default:
       break;
   }

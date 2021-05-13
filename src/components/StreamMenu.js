@@ -6,8 +6,7 @@ import {
   extractCategoryIndex,
   extractDataSource,
   extractStreamIndex,
-  generateStreamKey,
-  isUserStream
+  generateStreamKey
 } from '@common';
 import { StreamSettingModal } from './';
 import { extractType } from '../assets/common';
@@ -29,11 +28,7 @@ function StreamMenu({ actions }) {
     if (streamData.attributeList.length) {
       setIsModalVisible(true);
     } else {
-      if (isUserStream(dataSource)) {
-        actions.selectUserStream(type, dataSource);
-      } else {
-        actions.selectStream(type, dataSource, streamData.code);
-      }
+      actions.selectStream(type, dataSource, streamData.code);
     }
   };
 

@@ -1,4 +1,5 @@
 export { default as allMarketStreams } from './allMarketStreams.js';
+export { default as allUserStreams } from './allUserStreams.js';
 export { default as symbols } from './symbols.js';
 export { default as futuresSymbols } from './futuresSymbols.js';
 export { default as cSymbols } from './cSymbols.js';
