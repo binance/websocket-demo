@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/websocket-demo/static/css/main.10ceea71.chunk.css",
-    "main.js": "/websocket-demo/static/js/main.c3668ad4.chunk.js",
-    "main.js.map": "/websocket-demo/static/js/main.c3668ad4.chunk.js.map",
+    "main.js": "/websocket-demo/static/js/main.f3155fbc.chunk.js",
+    "main.js.map": "/websocket-demo/static/js/main.f3155fbc.chunk.js.map",
     "runtime-main.js": "/websocket-demo/static/js/runtime-main.a0a6c5a8.js",
     "runtime-main.js.map": "/websocket-demo/static/js/runtime-main.a0a6c5a8.js.map",
     "static/css/2.45f96635.chunk.css": "/websocket-demo/static/css/2.45f96635.chunk.css",
-    "static/js/2.019728e6.chunk.js": "/websocket-demo/static/js/2.019728e6.chunk.js",
-    "static/js/2.019728e6.chunk.js.map": "/websocket-demo/static/js/2.019728e6.chunk.js.map",
+    "static/js/2.d6ac54b4.chunk.js": "/websocket-demo/static/js/2.d6ac54b4.chunk.js",
+    "static/js/2.d6ac54b4.chunk.js.map": "/websocket-demo/static/js/2.d6ac54b4.chunk.js.map",
     "static/js/3.f3c28df7.chunk.js": "/websocket-demo/static/js/3.f3c28df7.chunk.js",
     "static/js/3.f3c28df7.chunk.js.map": "/websocket-demo/static/js/3.f3c28df7.chunk.js.map",
     "index.html": "/websocket-demo/index.html",
     "static/css/2.45f96635.chunk.css.map": "/websocket-demo/static/css/2.45f96635.chunk.css.map",
     "static/css/main.10ceea71.chunk.css.map": "/websocket-demo/static/css/main.10ceea71.chunk.css.map",
-    "static/js/2.019728e6.chunk.js.LICENSE.txt": "/websocket-demo/static/js/2.019728e6.chunk.js.LICENSE.txt"
+    "static/js/2.d6ac54b4.chunk.js.LICENSE.txt": "/websocket-demo/static/js/2.d6ac54b4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a0a6c5a8.js",
     "static/css/2.45f96635.chunk.css",
-    "static/js/2.019728e6.chunk.js",
+    "static/js/2.d6ac54b4.chunk.js",
     "static/css/main.10ceea71.chunk.css",
-    "static/js/main.c3668ad4.chunk.js"
+    "static/js/main.f3155fbc.chunk.js"
   ]
 }
