@@ -21,7 +21,7 @@ import {
   cPairs,
   contractTypes
 } from '@constants';
-import { extractType, extractCategoryIndex, extractDataSource, extractStreamIndex } from '@common';
+import { extractType, extractCategoryIndex, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
 import PropTypes from 'prop-types';
 
@@ -29,15 +29,13 @@ const { Option } = Select;
 
 function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) {
   const [type, setType] = useState('');
-  const [dataSource, setDataSource] = useState('');
   const [categoryData, setCategoryData] = useState({});
   const [streamData, setStreamData] = useState({ attributeList: [] });
   const [code, setCode] = useState('');
   const [lastAttributeValues, setLastAttributeValues] = useState({});
   useEffect(() => {
     setType(extractType(indexKey));
-    setDataSource(extractDataSource(indexKey));
-  }, [indexKey, setType, setDataSource]);
+  }, [indexKey, setType]);
   useEffect(() => {
     setCategoryData(allMarketStreams[extractCategoryIndex(indexKey)]);
   }, [indexKey, setCategoryData]);
@@ -93,7 +91,7 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
           title={i18n.t(`streamName.${streamData.streamName}`)}
           visible={visible}
           destroyOnClose={true}
-          onOk={() => onOk(type, dataSource, code)}
+          onOk={() => onOk(type, code)}
           onCancel={onCancel}
         >
           <Form>

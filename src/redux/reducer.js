@@ -16,7 +16,6 @@ const reducer = produce((draft, { type, payload }) => {
     case types.SET_SELECTED_STREAM:
       draft.selectedStream = {
         type: payload.type,
-        dataSource: payload.dataSource,
         codes: payload.codes
       };
       break;

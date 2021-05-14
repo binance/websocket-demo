@@ -2,12 +2,7 @@ import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
 import { allMarketStreams } from '@constants';
-import {
-  extractCategoryIndex,
-  extractDataSource,
-  extractStreamIndex,
-  generateStreamKey
-} from '@common';
+import { extractCategoryIndex, extractStreamIndex, generateStreamKey } from '@common';
 import { StreamSettingModal } from './';
 import { extractType } from '../assets/common';
 import PropTypes from 'prop-types';
@@ -22,19 +17,18 @@ function StreamMenu({ actions }) {
     setIndexKey(e.key);
     const key = e.key;
     const type = extractType(key);
-    const dataSource = extractDataSource(key);
     const streamData =
       allMarketStreams[extractCategoryIndex(key)].streamList[extractStreamIndex(key)];
     if (streamData.attributeList.length) {
       setIsModalVisible(true);
     } else {
-      actions.selectStream(type, dataSource, streamData.code);
+      actions.selectStream(type, streamData.code);
     }
   };
 
   const modal = useMemo(() => {
-    const handleOk = (type, dataSource, code) => {
-      if (code) actions.selectStream(type, dataSource, code);
+    const handleOk = (type, code) => {
+      if (code) actions.selectStream(type, code);
       setIsModalVisible(false);
     };
 
@@ -62,14 +56,7 @@ function StreamMenu({ actions }) {
             >
               {streamType.streamList.map((stream, streamIndex) => {
                 return (
-                  <Menu.Item
-                    key={generateStreamKey(
-                      streamType.type,
-                      streamType.dataSource,
-                      categoryIndex,
-                      streamIndex
-                    )}
-                  >
+                  <Menu.Item key={generateStreamKey(streamType.type, categoryIndex, streamIndex)}>
                     {i18n.t(`streamName.${stream.streamName}`)}
                   </Menu.Item>
                 );

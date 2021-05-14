@@ -120,26 +120,17 @@ const isSameType = (type, selectedStream) => {
   return selectedStream.type === EMPTY_STR || selectedStream.type === type;
 };
 
-const isSameDataSource = (dataSource, selectedStream) => {
-  return selectedStream.dataSource === EMPTY_STR || selectedStream.dataSource === dataSource;
-};
-
-const selectStream = (type, dataSource, code) => {
+const selectStream = (type, code) => {
   return (dispatch, getState) => {
     const { selectedStream } = getState();
     const codes = selectedStream.codes;
     const streamList = [...codes];
-    if (
-      isSameType(type, selectedStream) &&
-      isSameDataSource(dataSource, selectedStream) &&
-      streamList.indexOf(code) === -1
-    ) {
+    if (isSameType(type, selectedStream) && streamList.indexOf(code) === -1) {
       streamList.push(code);
       dispatch({
         type: types.SET_SELECTED_STREAM,
         payload: {
           type: type,
-          dataSource: dataSource,
           codes: streamList
         }
       });
@@ -165,7 +156,6 @@ const removeSelectedStream = code => {
       type: types.SET_SELECTED_STREAM,
       payload: {
         type: streamList.length ? selectedStream.type : EMPTY_STR,
-        dataSource: streamList.length ? selectedStream.dataSource : EMPTY_STR,
         codes: streamList
       }
     });
