@@ -2,7 +2,7 @@
 
 This web app is developed to simplify the binance websocket stream testing process. By utilizing the interface, the user can check on multiple streams at a time without knowing the parameters. Since this app is designed for testing purpose instead of the real subscription tool, **_all the subscribed streams will be unsubscribed in 3 sec._**
 
-The left hand side of the screen has 2 parts. The upper is the key generation section. If the user aims to check on the market streams, the key is not required and the user can proceed to the 2nd part. The lower is the stream selection area. The user can only select the streams under the same data source. That is, once the user select a spot market stream, to select from other source, such as spot user stream, is not allowed.
+The left hand side of the screen has 2 parts. The upper is for user stream subscription. The user can select one of the user streams to subscribe. The listen key will be automatically generated based on the api key. The lower is the market stream selection area. The user can only select the streams under the same data source. That is, once the user select a spot market stream, to select from other source, such as coin-m futures stream, is not allowed.
 
 **Note: Some of the symbols are only available in PRODUCTION.**
 
