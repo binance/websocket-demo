@@ -162,11 +162,24 @@ const removeSelectedStream = code => {
   };
 };
 
+const removeAllSelectedStream = () => {
+  return dispatch => {
+    dispatch({
+      type: types.SET_SELECTED_STREAM,
+      payload: {
+        type: EMPTY_STR,
+        codes: []
+      }
+    });
+  };
+};
+
 const actions = {
   generateUserStreamKey,
   selectStream,
   selectUserStream,
   removeSelectedStream,
+  removeAllSelectedStream,
   subscribeMarketStream,
   subscribeUserStream
 };

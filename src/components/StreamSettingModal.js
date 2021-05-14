@@ -21,7 +21,7 @@ import {
   cPairs,
   contractTypes
 } from '@constants';
-import { extractType, extractCategoryIndex, extractStreamIndex } from '@common';
+import { extractType, extractStreamIndex } from '@common';
 import './StreamSettingModal.css';
 import PropTypes from 'prop-types';
 
@@ -29,7 +29,6 @@ const { Option } = Select;
 
 function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) {
   const [type, setType] = useState('');
-  const [categoryData, setCategoryData] = useState({});
   const [streamData, setStreamData] = useState({ attributeList: [] });
   const [code, setCode] = useState('');
   const [lastAttributeValues, setLastAttributeValues] = useState({});
@@ -37,13 +36,11 @@ function StreamSettingModal({ indexKey = '', visible = false, onOk, onCancel }) 
     setType(extractType(indexKey));
   }, [indexKey, setType]);
   useEffect(() => {
-    setCategoryData(allMarketStreams[extractCategoryIndex(indexKey)]);
-  }, [indexKey, setCategoryData]);
-  useEffect(() => {
-    if (categoryData.streamList) {
-      setStreamData(categoryData.streamList[extractStreamIndex(indexKey)]);
+    if (type) {
+      const marketStreamType = allMarketStreams.find(streamType => streamType.type === type);
+      setStreamData(marketStreamType.streamList[extractStreamIndex(indexKey)]);
     }
-  }, [indexKey, categoryData, setStreamData]);
+  }, [indexKey, type, setStreamData]);
   useEffect(() => {
     streamData && setCode(streamData.code);
   }, [setCode, streamData]);

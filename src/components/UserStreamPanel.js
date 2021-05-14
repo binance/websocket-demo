@@ -24,10 +24,10 @@ function UserStreamPanel({ listenKey, actions }) {
     <>
       <Title level={5}>{i18n.t('label.userStream')}</Title>
       <Form>
-        <Form.Item label="API key" name="apiKey">
+        <Form.Item label="API key">
           <Input onChange={handleKeyInput} />
         </Form.Item>
-        <Form.Item label="Source" name="source">
+        <Form.Item label="Source">
           <Select placeholder={i18n.t('message.selectStream')} onChange={onSelectChange}>
             {allUserStreams.map(stream => (
               <Option key={stream} value={stream}>
@@ -36,9 +36,7 @@ function UserStreamPanel({ listenKey, actions }) {
             ))}
           </Select>
         </Form.Item>
-        <Form.Item label="Listen Key" name="Listen Key">
-          {listenKey && <Text keyboard>{listenKey}</Text>}
-        </Form.Item>
+        <Form.Item label="Listen Key">{listenKey && <Text keyboard>{listenKey}</Text>}</Form.Item>
       </Form>
       <Button
         disabled={true}

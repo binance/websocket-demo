@@ -3,17 +3,11 @@ import i18n from '../i18n';
 import { UserStreamPanel, MarketStreamPanel } from './';
 
 function SelectionPanel({ actions, listenKey, selectedStream }) {
-  const description = (
-    <>
-      <p>{i18n.t('message.restriction1')}</p>
-      <p>{i18n.t('message.restriction2')}</p>
-    </>
-  );
   return (
     <>
       <Alert
         message={i18n.t('label.info')}
-        description={description}
+        description={i18n.t('message.restriction1')}
         type="info"
         showIcon
         closable

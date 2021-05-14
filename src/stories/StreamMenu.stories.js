@@ -6,10 +6,24 @@ export default {
   component: StreamMenu,
   subcomponent: StreamSettingModal,
   argTypes: {
-    actions: undefined
+    actions: undefined,
+    type: ''
   }
 };
 
 const Template = args => <StreamMenu {...args} />;
 
-export const Default = Template.bind({});
+export const Spot = Template.bind({});
+Spot.args = {
+  type: 'spot'
+};
+
+export const UsdsMFutures = Template.bind({});
+UsdsMFutures.args = {
+  type: 'uFutures'
+};
+
+export const CoinMFutures = Template.bind({});
+CoinMFutures.args = {
+  type: 'cFutures'
+};

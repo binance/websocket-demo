@@ -16,18 +16,18 @@ const Template = args => <StreamSettingModal {...args} />;
 
 export const NoParamAllMarketMiniTicker = Template.bind({});
 NoParamAllMarketMiniTicker.args = {
-  indexKey: 'spot:market::0-4',
+  indexKey: 'spot:4',
   visible: true
 };
 
 export const OneParamTrade = Template.bind({});
 OneParamTrade.args = {
-  indexKey: 'spot:market::0-0',
+  indexKey: 'spot:0',
   visible: true
 };
 
 export const TwoParamKline = Template.bind({});
 TwoParamKline.args = {
-  indexKey: 'spot:market::0-2',
+  indexKey: 'spot:2',
   visible: true
 };

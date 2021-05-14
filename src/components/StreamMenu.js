@@ -2,23 +2,24 @@ import { useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import i18n from '../i18n';
 import { allMarketStreams } from '@constants';
-import { extractCategoryIndex, extractStreamIndex, generateStreamKey } from '@common';
+import { extractStreamIndex, generateStreamKey } from '@common';
 import { StreamSettingModal } from './';
-import { extractType } from '../assets/common';
 import PropTypes from 'prop-types';
 
-const { SubMenu } = Menu;
-
-function StreamMenu({ actions }) {
+function StreamMenu({ actions, type }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [indexKey, setIndexKey] = useState('');
+  const [streams, setStreams] = useState([]);
+
+  useMemo(() => {
+    const marketStreamType = allMarketStreams.find(streamType => streamType.type === type);
+    setStreams(marketStreamType.streamList);
+  }, [setStreams, type]);
 
   const onClickMenuItem = e => {
     setIndexKey(e.key);
     const key = e.key;
-    const type = extractType(key);
-    const streamData =
-      allMarketStreams[extractCategoryIndex(key)].streamList[extractStreamIndex(key)];
+    const streamData = streams[extractStreamIndex(key)];
     if (streamData.attributeList.length) {
       setIsModalVisible(true);
     } else {
@@ -48,20 +49,11 @@ function StreamMenu({ actions }) {
   return (
     <>
       <Menu onClick={onClickMenuItem}>
-        {allMarketStreams.map((streamType, categoryIndex) => {
+        {streams.map((stream, index) => {
           return (
-            <SubMenu
-              title={`${i18n.t(`label.${streamType.type}`)}`}
-              key={streamType.type + '-' + categoryIndex}
-            >
-              {streamType.streamList.map((stream, streamIndex) => {
-                return (
-                  <Menu.Item key={generateStreamKey(streamType.type, categoryIndex, streamIndex)}>
-                    {i18n.t(`streamName.${stream.streamName}`)}
-                  </Menu.Item>
-                );
-              })}
-            </SubMenu>
+            <Menu.Item key={generateStreamKey(type, index)}>
+              {i18n.t(`streamName.${stream.streamName}`)}
+            </Menu.Item>
           );
         })}
       </Menu>
@@ -71,7 +63,8 @@ function StreamMenu({ actions }) {
 }
 
 StreamMenu.propTypes = {
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  type: PropTypes.string
 };
 
 export default StreamMenu;
