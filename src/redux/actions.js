@@ -3,10 +3,10 @@ import { post } from '../services/request';
 import endpoints from '../endpoints';
 import { EMPTY_STR, PROD, SPOT, UFUTURES, CFUTURES } from '@constants';
 
-const generateUserStreamKey = (type, apiKey) => {
+const generateUserStreamKey = (env, type, apiKey) => {
   return async dispatch => {
     try {
-      const data = await post(getListenKeyEndpoint(type), null, {
+      const data = await post(getListenKeyEndpoint(env, type), null, {
         headers: {
           'Content-Type': 'application/json',
           'X-MBX-APIKEY': apiKey
@@ -22,14 +22,14 @@ const generateUserStreamKey = (type, apiKey) => {
   };
 };
 
-const getListenKeyEndpoint = type => {
+const getListenKeyEndpoint = (env, type) => {
   switch (type) {
     case SPOT:
-      return endpoints.api.spotListenKey;
+      return env === PROD ? endpoints.api.spotListenKey : endpoints.api.spotTestListenKey;
     case UFUTURES:
-      return endpoints.api.uFutureListenKey;
+      return env === PROD ? endpoints.api.uFutureListenKey : endpoints.api.uFutureTestListenKey;
     case CFUTURES:
-      return endpoints.api.cFutureListenKey;
+      return env === PROD ? endpoints.api.cFutureListenKey : endpoints.api.cFutureTestListenKey;
     default:
       return EMPTY_STR;
   }
@@ -51,7 +51,7 @@ const getBase = (env, type) => {
 const subscribeUserStream = (apiKey, env) => {
   return async (dispatch, getState) => {
     const { selectedUserStream } = getState();
-    await dispatch(generateUserStreamKey(selectedUserStream, apiKey));
+    await dispatch(generateUserStreamKey(env, selectedUserStream, apiKey));
     const { listenKey } = getState();
     dispatch(subscribeStream(env, selectedUserStream, [listenKey]));
   };

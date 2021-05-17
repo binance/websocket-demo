@@ -38,12 +38,7 @@ function UserStreamPanel({ listenKey, actions }) {
         </Form.Item>
         <Form.Item label="Listen Key">{listenKey && <Text keyboard>{listenKey}</Text>}</Form.Item>
       </Form>
-      <Button
-        disabled={true}
-        type="default"
-        style={{ margin: '5px' }}
-        onClick={() => onClickSubscribe(TESTNET)}
-      >
+      <Button type="default" style={{ margin: '5px' }} onClick={() => onClickSubscribe(TESTNET)}>
         {i18n.t('label.testSubscribe')}
       </Button>
       <Button type="primary" style={{ margin: '5px' }} onClick={() => onClickSubscribe(PROD)}>
