@@ -94,7 +94,7 @@ const subscribeStream = (env, type, streams) => {
           type: types.APPEND_STREAM_MESSAGE,
           payload: 'End of subscription.'
         });
-      }, 3000);
+      }, 5000);
     };
     ws.onmessage = function (e) {
       if (e.type === 'error') {

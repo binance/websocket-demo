@@ -38,7 +38,8 @@
     "userStream": "Websocket账户信息推送"
   },
   "message": {
-    "restriction1": "1. 每次订阅时限为3秒。",
+    "restriction1": "1. 每次订阅时限为5秒。",
+    "restriction2": "2. Testnet 仅支援部分交易对，此外由于规模差异，即使是有支援的交易对也可能无数据推送。",
     "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",
     "selectStream": "选择数据流"
   }

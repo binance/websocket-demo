@@ -6,6 +6,7 @@ import { isUserStream } from '@common';
 import { TESTNET, PROD, allMarketStreams } from '@constants';
 import { TagDisplay } from '.';
 import { StreamMenu } from '.';
+import './MarketStreamPanel.css';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -26,7 +27,7 @@ function MarketStreamPanel({ actions, selectedStream, hasKey }) {
   return (
     <>
       <Title level={5}>{i18n.t('label.marketStream')}</Title>
-      <Form>
+      <Form className="market-stream">
         <Form.Item label="Source">
           <Select placeholder={i18n.t('message.selectStream')} onChange={onSelectChange}>
             {allMarketStreams.map(streamType => (
@@ -42,8 +43,12 @@ function MarketStreamPanel({ actions, selectedStream, hasKey }) {
               {i18n.t('message.selectStream')} <DownOutlined />
             </span>
           </Dropdown>
-          <TagDisplay actions={actions} tags={selectedStream.codes} />
         </Form.Item>
+        {selectedStream.codes.length > 0 && (
+          <Form.Item>
+            <TagDisplay actions={actions} tags={selectedStream.codes} />
+          </Form.Item>
+        )}
       </Form>
       <Button type="default" style={{ margin: '5px' }} onClick={() => onClickSubscribe(TESTNET)}>
         {i18n.t('label.testSubscribe')}

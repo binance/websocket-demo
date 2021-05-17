@@ -1,6 +1,7 @@
 @import '~antd/dist/antd.css';
 .sider > .ant-layout-sider-children {
   padding: 10px;
+  overflow-y: auto;
 }
 
 .ant-layout-footer {

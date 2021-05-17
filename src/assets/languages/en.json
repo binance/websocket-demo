@@ -38,7 +38,8 @@
     "userStream": "User Data Streams"
   },
   "message": {
-    "restriction1": "1. Each subscription lasts 3 secs.",
+    "restriction1": "1. Each subscription lasts 5 secs.",
+    "restriction2": "2. Some symbols are NOT supported in Testnet. Besides, it is possible that the supported symbol has no data pushed due to the scale difference.",
     "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",
     "selectStream": "Choose a stream to subscribe"
   }
