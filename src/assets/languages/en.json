@@ -26,6 +26,7 @@
   },
   "label": {
     "cFutures": "COIN-M Futures",
+    "error": "Error",
     "generateKey": "Generate Listen Key",
     "info": "Notice",
     "market": "Market",
@@ -38,6 +39,9 @@
     "userStream": "User Data Streams"
   },
   "message": {
+    "hasError": "Something went wrong.",
+    "marketStreamInput": "Please select a stream.",
+    "userStreamInput": "Please input the API key and select a stream.",
     "restriction1": "1. Each subscription lasts 5 secs.",
     "restriction2": "2. Some symbols are NOT supported in Testnet. Besides, it is possible that the supported symbol has no data pushed due to the scale difference.",
     "shouldGetKey": "Please acquire the listen key before subscribing the user stream.",

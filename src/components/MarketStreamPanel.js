@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { message, Button, Form, Dropdown, Select, Typography } from 'antd';
+import { Button, Form, Dropdown, Select, Typography, notification } from 'antd';
 import i18n from '../i18n';
 import { DownOutlined } from '@ant-design/icons';
-import { isUserStream } from '@common';
 import { TESTNET, PROD, allMarketStreams } from '@constants';
 import { TagDisplay } from '.';
 import { StreamMenu } from '.';
@@ -11,18 +10,20 @@ import './MarketStreamPanel.css';
 const { Title } = Typography;
 const { Option } = Select;
 
-function MarketStreamPanel({ actions, selectedStream, hasKey }) {
+function MarketStreamPanel({ actions, selectedStream }) {
   const [type, setType] = useState('');
   const onSelectChange = value => {
     setType(value);
     actions.removeAllSelectedStream();
   };
   const onClickSubscribe = env => {
-    if (isUserStream(selectedStream.dataSource) && !hasKey) {
-      message.error(i18n.t('message.shouldGetKey'));
-    } else {
-      actions.subscribeMarketStream(env);
+    if (selectedStream.codes.length === 0) {
+      return notification['error']({
+        message: i18n.t('label.error'),
+        description: i18n.t('message.marketStreamInput')
+      });
     }
+    actions.subscribeMarketStream(env);
   };
   return (
     <>

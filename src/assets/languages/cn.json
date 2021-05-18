@@ -26,6 +26,7 @@
   },
   "label": {
     "cFutures": "币本位合约",
+    "error": "错误",
     "generateKey": "生成 Listen Key",
     "info": "注意",
     "market": "行情",
@@ -38,6 +39,9 @@
     "userStream": "Websocket账户信息推送"
   },
   "message": {
+    "hasError": "发生错误。",
+    "marketStreamInput": "请选择数据流。",
+    "userStreamInput": "请输入API key并选择数据流。",
     "restriction1": "1. 每次订阅时限为5秒。",
     "restriction2": "2. Testnet 仅支援部分交易对，此外由于规模差异，即使是有支援的交易对也可能无数据推送。",
     "shouldGetKey": "请在订阅账户信息前生成 Listen Key。",

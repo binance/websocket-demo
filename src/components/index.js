@@ -1,3 +1,4 @@
+export { default as ErrorBoundary } from './ErrorBoundary.js';
 export { default as UserStreamPanel } from './UserStreamPanel.js';
 export { default as SelectionPanel } from './SelectionPanel.js';
 export { default as StreamMenu } from './StreamMenu.js';

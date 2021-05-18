@@ -1,4 +1,4 @@
-import { Form, Input, Button, Select, Typography } from 'antd';
+import { Form, Input, Button, Select, Typography, notification } from 'antd';
 import i18n from '../i18n';
 import { useState } from 'react';
 import { TESTNET, PROD, allUserStreams } from '@constants';
@@ -17,6 +17,12 @@ function UserStreamPanel({ listenKey, actions }) {
   };
 
   const onClickSubscribe = env => {
+    if (!key || !env) {
+      return notification['error']({
+        message: i18n.t('label.error'),
+        description: i18n.t('message.userStreamInput')
+      });
+    }
     actions.subscribeUserStream(key, env);
   };
 
