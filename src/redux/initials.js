@@ -6,6 +6,7 @@ const initials = {
     codes: []
   },
   selectedUserStream: EMPTY_STR,
-  stream: []
+  stream: [],
+  path: EMPTY_STR
 };
 export default initials;

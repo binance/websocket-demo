@@ -11,7 +11,7 @@ const { Title } = Typography;
 const { Sider, Content, Footer } = Layout;
 const { Option } = Select;
 
-function App({ actions, listenKey, selectedStream, stream }) {
+function App({ actions, listenKey, selectedStream, stream, path }) {
   const changeLanguage = language => {
     i18n.changeLanguage(language);
   };
@@ -22,7 +22,7 @@ function App({ actions, listenKey, selectedStream, stream }) {
         <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
       </Sider>
       <Content className="content">
-        <SubscriptionPanel stream={stream} />
+        <SubscriptionPanel stream={stream} path={path} selectedStream={selectedStream} />
       </Content>
       <Footer>
         <Select defaultValue="en" style={{ width: 150 }} onChange={v => changeLanguage(v)}>
@@ -38,7 +38,8 @@ const mapStateToProps = state => {
   return {
     listenKey: state.listenKey,
     selectedStream: state.selectedStream,
-    stream: state.stream
+    stream: state.stream,
+    path: state.path
   };
 };
 

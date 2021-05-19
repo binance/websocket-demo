@@ -69,7 +69,12 @@ const subscribeStream = (env, type, streams) => {
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
-    const ws = new WebSocket(getBase(env, type));
+    const path = getBase(env, type);
+    dispatch({
+      type: types.SET_BASE_STREAM_PATH,
+      payload: path
+    });
+    const ws = new WebSocket(path);
     ws.onerror = wsOnError;
     ws.onclose = wsOnClose;
     ws.onopen = function () {
