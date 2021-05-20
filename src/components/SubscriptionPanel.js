@@ -12,9 +12,7 @@ function SubscriptionPanel({ stream = [], path = EMPTY_STR, selectedStream = {} 
   }, [stream]);
   return (
     <>
-      <Title level={5}>
-        PATH: {path && <Text keyboard>{`${path}?streams=${selectedStream.codes.join('/')}`}</Text>}
-      </Title>
+      <Title level={5}>PATH: {path && <Text keyboard>{path}</Text>}</Title>
       <div className="terminal">
         {stream.length ? (
           stream.map((line, index) => <p key={`p-${index}`}>{'>' + line}</p>)
