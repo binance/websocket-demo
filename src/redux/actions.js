@@ -48,11 +48,11 @@ const getBase = (env, type) => {
   }
 };
 
-const subscribeUserStream = (apiKey, env) => {
+const subscribeUserStream = (listenKey, env) => {
   return async (dispatch, getState) => {
     const { selectedUserStream } = getState();
-    await dispatch(generateUserStreamKey(env, selectedUserStream, apiKey));
-    const { listenKey } = getState();
+    // await dispatch(generateUserStreamKey(env, selectedUserStream, apiKey));
+    // const { listenKey } = getState();
     dispatch(subscribeStream(env, selectedUserStream, [listenKey]));
   };
 };
@@ -69,7 +69,7 @@ const subscribeStream = (env, type, streams) => {
     dispatch({
       type: types.CLEAR_STREAM_MESSAGE
     });
-    const path = getBase(env, type);
+    const path = `${getBase(env, type)}?streams=${streams.join('/')}`;
     dispatch({
       type: types.SET_BASE_STREAM_PATH,
       payload: path
