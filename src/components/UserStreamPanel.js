@@ -3,10 +3,10 @@ import i18n from '../i18n';
 import { useState } from 'react';
 import { TESTNET, PROD, allUserStreams } from '@constants';
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 const { Option } = Select;
 
-function UserStreamPanel({ listenKey, actions }) {
+function UserStreamPanel({ actions }) {
   const [key, setKey] = useState('');
   const handleKeyInput = e => {
     setKey(e.target.value);
@@ -36,7 +36,6 @@ function UserStreamPanel({ listenKey, actions }) {
             ))}
           </Select>
         </Form.Item>
-        {/* <Form.Item label="Listen Key">{listenKey && <Text keyboard>{listenKey}</Text>}</Form.Item> */}
       </Form>
       <Button type="default" style={{ margin: '5px' }} onClick={() => onClickSubscribe(TESTNET)}>
         {i18n.t('label.testSubscribe')}

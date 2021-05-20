@@ -11,7 +11,7 @@ const { Title } = Typography;
 const { Sider, Content, Footer } = Layout;
 const { Option } = Select;
 
-function App({ actions, listenKey, selectedStream, stream, path }) {
+function App({ actions, selectedStream, stream, path }) {
   const changeLanguage = language => {
     i18n.changeLanguage(language);
   };
@@ -19,7 +19,7 @@ function App({ actions, listenKey, selectedStream, stream, path }) {
     <Layout style={{ height: '100vh' }}>
       <Sider theme="light" width={400} className="sider">
         <Title level={3}>Websocket Demo</Title>
-        <SelectionPanel listenKey={listenKey} actions={actions} selectedStream={selectedStream} />
+        <SelectionPanel actions={actions} selectedStream={selectedStream} />
       </Sider>
       <Content className="content">
         <SubscriptionPanel stream={stream} path={path} selectedStream={selectedStream} />
@@ -36,7 +36,6 @@ function App({ actions, listenKey, selectedStream, stream, path }) {
 
 const mapStateToProps = state => {
   return {
-    listenKey: state.listenKey,
     selectedStream: state.selectedStream,
     stream: state.stream,
     path: state.path

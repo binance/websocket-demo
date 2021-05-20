@@ -4,9 +4,6 @@ import produce from 'immer';
 
 const reducer = produce((draft, { type, payload }) => {
   switch (type) {
-    case types.GENERATE_KEY_SPOT:
-      draft.listenKey = payload;
-      break;
     case types.CLEAR_STREAM_MESSAGE:
       draft.stream = [];
       break;

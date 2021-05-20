@@ -2,7 +2,7 @@ import { Alert, Divider } from 'antd';
 import i18n from '../i18n';
 import { UserStreamPanel, MarketStreamPanel, ErrorBoundary } from './';
 
-function SelectionPanel({ actions, listenKey, selectedStream }) {
+function SelectionPanel({ actions, selectedStream }) {
   const descriptions = (
     <>
       <p>{i18n.t('message.restriction1')}</p>
@@ -20,7 +20,7 @@ function SelectionPanel({ actions, listenKey, selectedStream }) {
         style={{ marginBottom: '10px' }}
       />
       <ErrorBoundary>
-        <UserStreamPanel listenKey={listenKey} actions={actions} />
+        <UserStreamPanel actions={actions} />
       </ErrorBoundary>
       <Divider orientation="left" plain />
       <ErrorBoundary>
