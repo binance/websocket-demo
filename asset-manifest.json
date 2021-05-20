@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/websocket-demo/static/css/main.de9a9ead.chunk.css",
-    "main.js": "/websocket-demo/static/js/main.74868b1c.chunk.js",
-    "main.js.map": "/websocket-demo/static/js/main.74868b1c.chunk.js.map",
-    "runtime-main.js": "/websocket-demo/static/js/runtime-main.2c200e01.js",
-    "runtime-main.js.map": "/websocket-demo/static/js/runtime-main.2c200e01.js.map",
+    "main.css": "/websocket-demo/static/css/main.089d8adc.chunk.css",
+    "main.js": "/websocket-demo/static/js/main.0c07536e.chunk.js",
+    "main.js.map": "/websocket-demo/static/js/main.0c07536e.chunk.js.map",
+    "runtime-main.js": "/websocket-demo/static/js/runtime-main.f05df663.js",
+    "runtime-main.js.map": "/websocket-demo/static/js/runtime-main.f05df663.js.map",
     "static/css/2.45f96635.chunk.css": "/websocket-demo/static/css/2.45f96635.chunk.css",
-    "static/js/2.05353711.chunk.js": "/websocket-demo/static/js/2.05353711.chunk.js",
-    "static/js/2.05353711.chunk.js.map": "/websocket-demo/static/js/2.05353711.chunk.js.map",
-    "static/js/3.7a7109c2.chunk.js": "/websocket-demo/static/js/3.7a7109c2.chunk.js",
-    "static/js/3.7a7109c2.chunk.js.map": "/websocket-demo/static/js/3.7a7109c2.chunk.js.map",
+    "static/js/2.199b61d4.chunk.js": "/websocket-demo/static/js/2.199b61d4.chunk.js",
+    "static/js/2.199b61d4.chunk.js.map": "/websocket-demo/static/js/2.199b61d4.chunk.js.map",
+    "static/js/3.ee448b0b.chunk.js": "/websocket-demo/static/js/3.ee448b0b.chunk.js",
+    "static/js/3.ee448b0b.chunk.js.map": "/websocket-demo/static/js/3.ee448b0b.chunk.js.map",
     "index.html": "/websocket-demo/index.html",
     "static/css/2.45f96635.chunk.css.map": "/websocket-demo/static/css/2.45f96635.chunk.css.map",
-    "static/css/main.de9a9ead.chunk.css.map": "/websocket-demo/static/css/main.de9a9ead.chunk.css.map",
-    "static/js/2.05353711.chunk.js.LICENSE.txt": "/websocket-demo/static/js/2.05353711.chunk.js.LICENSE.txt"
+    "static/css/main.089d8adc.chunk.css.map": "/websocket-demo/static/css/main.089d8adc.chunk.css.map",
+    "static/js/2.199b61d4.chunk.js.LICENSE.txt": "/websocket-demo/static/js/2.199b61d4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2c200e01.js",
+    "static/js/runtime-main.f05df663.js",
     "static/css/2.45f96635.chunk.css",
-    "static/js/2.05353711.chunk.js",
-    "static/css/main.de9a9ead.chunk.css",
-    "static/js/main.74868b1c.chunk.js"
+    "static/js/2.199b61d4.chunk.js",
+    "static/css/main.089d8adc.chunk.css",
+    "static/js/main.0c07536e.chunk.js"
   ]
 }
