@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/websocket-demo/static/css/main.089d8adc.chunk.css",
-    "main.js": "/websocket-demo/static/js/main.0c07536e.chunk.js",
-    "main.js.map": "/websocket-demo/static/js/main.0c07536e.chunk.js.map",
+    "main.js": "/websocket-demo/static/js/main.e88f5441.chunk.js",
+    "main.js.map": "/websocket-demo/static/js/main.e88f5441.chunk.js.map",
     "runtime-main.js": "/websocket-demo/static/js/runtime-main.f05df663.js",
     "runtime-main.js.map": "/websocket-demo/static/js/runtime-main.f05df663.js.map",
     "static/css/2.45f96635.chunk.css": "/websocket-demo/static/css/2.45f96635.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.45f96635.chunk.css",
     "static/js/2.199b61d4.chunk.js",
     "static/css/main.089d8adc.chunk.css",
-    "static/js/main.0c07536e.chunk.js"
+    "static/js/main.e88f5441.chunk.js"
   ]
 }
