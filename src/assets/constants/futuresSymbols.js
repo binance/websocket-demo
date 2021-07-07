@@ -98,8 +98,6 @@ const futuresSymbols = [
   'CHRUSDT',
   'MANAUSDT',
   'ALICEUSDT',
-  'BTCUSDT_210625',
-  'ETHUSDT_210625',
   'HBARUSDT',
   'ONEUSDT',
   'LINAUSDT',
@@ -112,6 +110,15 @@ const futuresSymbols = [
   'BTTUSDT',
   'NKNUSDT',
   'SCUSDT',
-  'DGBUSDT'
+  'DGBUSDT',
+  '1000SHIBUSDT',
+  'ICPUSDT',
+  'BAKEUSDT',
+  'GTCUSDT',
+  'ETHBUSD',
+  'BTCUSDT_210924',
+  'ETHUSDT_210924',
+  'BTCDOMUSDT',
+  'KEEPUSDT'
 ];
 export default futuresSymbols;
