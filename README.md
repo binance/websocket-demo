@@ -10,7 +10,7 @@ The left hand side of the screen has 2 parts. The upper is for user stream subsc
 
 ## Demo Site
 
-- [Current Deployed Page](https://binance-exchange.github.io/websocket-demo)
+- [Current Deployed Page](https://binance.github.io/websocket-demo)
 
 ## Usage
 
